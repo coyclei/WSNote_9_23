@@ -1,0 +1,148 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="text_small">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="text_count">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">25dp</item>
+
+    </style>
+
+    <style name="text_id">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:minWidth">25dp</item>
+        <item name="android:maxWidth">35dp</item>
+        <item name="android:singleLine">true</item>
+
+        <item name="android:padding">2dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="bt_more">
+
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:text">more</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="text_info">
+
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:padding">3.5dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+
+    </style>
+
+    <style name="text_info_fk_fh_state">
+
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:padding">3.5dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+
+    </style>
+
+    <style name="text_popup_title">
+
+        <item name="android:id">@+id/tv_title</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">center_vertical</item>
+
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:paddingLeft">20dp</item>
+
+    </style>
+
+    <style name="text_date">
+
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:padding">3dp</item>
+    </style>
+
+    <style name="iv_image_goods">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="edit_text_input_num_count">
+        <item name="android:inputType">numberSigned|text</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="edit_text_phone">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="edit_text">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="list_person">
+        <item name="android:id">@+id/lv_list</item>
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:visibility">invisible</item>
+        <item name="android:background">@android:color/holo_red_light</item>
+        <item name="android:layout_marginLeft">10dp</item>
+
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+
+</resources>

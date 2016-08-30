@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    >
+    <!--代采购-->
+
+
+    <TextView
+        android:id="@+id/tv_id"
+        style="@style/text_id"
+        />
+    <!--android:paddingTop="10dp"-->
+
+    <RelativeLayout
+        android:id="@+id/rl_left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/tv_id">
+        <!--订单时间-->
+        <TextView
+            android:id="@+id/tv_date_create"
+            style="@style/text_date"
+            />
+        <!--订单人-->
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_date_create"
+            style="@style/text_info"
+            android:text="雷鹏辉"
+            />
+        <!--商品信息备注-->
+        <TextView
+            android:id="@+id/tv_goods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            style="@style/text_info" />
+
+        <!--&lt;!&ndash;bill_id&ndash;&gt;-->
+        <!--<TextView-->
+            <!--android:id="@+id/tv_bill_id"-->
+            <!--android:layout_width="120dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/tv_goods"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:text="888888"-->
+            <!--android:textColor="@android:color/white"-->
+            <!--android:textSize="16sp" />-->
+        <!--phone-->
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_goods"
+            android:text="phone:18274833970"
+            android:layout_toLeftOf="@+id/iv_image"
+            style="@style/text_info" />
+
+        <!--address-->
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_phone"
+            android:layout_toLeftOf="@+id/iv_image"
+            style="@style/text_info" />
+        <!--image-->
+        <com.ws.coyc.wsnote.UI.Layout.CircleImageView
+            android:id="@+id/iv_image"
+            style="@style/iv_image_goods"
+
+            android:src="@mipmap/ic_launcher"
+            android:layout_below="@+id/tv_goods"
+            />
+
+        <!--more button-->
+        <Button
+            android:id="@+id/bt_more"
+            android:layout_below="@+id/tv_address"
+            style="@style/bt_more"
+            />
+    </RelativeLayout>
+
+
+</RelativeLayout>

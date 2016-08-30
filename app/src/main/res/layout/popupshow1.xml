@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="350dp"
+    android:background="@android:color/white"
+    >
+    
+    <TextView 
+        style="@style/text_popup_title"
+        />
+    <Button
+        android:id="@+id/bt_delete"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:text="删除订单"
+        />
+
+    <EditText
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_title"
+        android:layout_toLeftOf="@+id/iv_image"
+       	android:hint="姓名"
+        style="@style/edit_text"
+        />
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_below="@+id/tv_title"
+        style="@style/iv_image_goods"
+        android:src="@mipmap/add"
+        />
+
+    <EditText
+        android:id="@+id/tv_goods"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_name"
+        android:layout_above="@+id/tv_phone"
+        android:hint="商品描述"
+        style="@style/edit_text"
+        />
+    <!--phone-->
+    <EditText
+        android:id="@+id/tv_phone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@+id/tv_address"
+
+        style="@style/edit_text_phone"
+        />
+    <!--address-->
+    <EditText
+        android:id="@+id/tv_address"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@+id/ll_bts"
+        android:hint="地址(选填)"
+        style="@style/edit_text"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_bts"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        >
+        <Button 
+            android:id="@+id/bt_ok_change"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:text="完成修改"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            />
+
+        <Button 
+            android:id="@+id/bt_ok_buy"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:text="完成采购"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            />
+        <Button
+            android:id="@+id/bt_ok_send"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:text="完成配送"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+    <ListView
+        style="@style/list_person"
+        android:layout_below="@+id/tv_name"
+
+        >
+
+    </ListView>
+
+</RelativeLayout>

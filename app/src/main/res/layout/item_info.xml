@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <!--代采购-->
+
+    <!--订单时间-->
+    <TextView
+        android:id="@+id/tv_date_create"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="2016-8-9"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="18sp"
+
+        />
+    <!--订单人-->
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="雷鹏辉"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="20sp"
+        android:layout_below="@+id/tv_date_create"
+        />
+    <!--商品信息备注-->
+    <TextView
+        android:id="@+id/tv_goods"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="面膜3个 枕头4个"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="20sp"
+        android:layout_below="@+id/tv_date_create"
+        android:layout_toRightOf="@id/tv_name"
+        />
+
+
+</RelativeLayout>

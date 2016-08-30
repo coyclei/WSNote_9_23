@@ -1,0 +1,71 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.ws.coyc.wsnote.UI.Activity.WSNoteInfo">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+    <TextView
+        android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="left"
+        android:keepScreenOn="true"
+        android:text="WSNote 微商记账\n
+版本号：2.1 beta1（体验版 请勿正式使用 只供试玩）\n
+
+
+简介：一款用于中小型商业记账应用，能增加，删除，查询，修改账单信息。特别将流水帐单分为3个状态进行显示与管理。（订单状态，交易状态，完成状态）\n
+
+说明：\n
+1,系统默认显示当月账单信息。\n
+2,系统默认对新“订单人”信息进行记录，记录后可极大方便后期的账单编辑。\n
+3,订单人不能重名，若重名则将该订单人信息更新。\n
+4,主界面搜索功能支持按名字，地址，手机号，商品信息，发货付款状态进行搜索。\n
+5,点击列表可查看更多信息，两次点击列表项可对该项进行编辑。\n
+6,账单图片只支持一张。\n
+7,长按界面顶部标题栏可快速回到本月账单。\n
+
+
+正式测试版将于9月1号发布，将优化界面显示细节项。\n
+如系统崩溃请记录操作情况并及时反馈。\n"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        />
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <Button
+                android:id="@+id/dummy_button"
+                style="?metaButtonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/dummy_button"
+                android:visibility="invisible"
+                />
+
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

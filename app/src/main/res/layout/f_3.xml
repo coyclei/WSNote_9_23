@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.Activity.MainActivity">
+
+
+    <ListView
+        android:id="@+id/lv_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl_bottom"
+        android:stackFromBottom="true"
+        >
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        >
+        <Button
+            android:id="@+id/bt_add"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="新增订单"
+            android:layout_toLeftOf="@+id/tv_bill_count"
+            />
+        <TextView
+            android:id="@+id/tv_bill_count"
+            style="@style/text_count"
+
+            />
+        <TextView
+            android:id="@+id/tv_bill_money"
+            style="@style/text_count"
+            android:layout_below="@+id/tv_bill_count"
+            />
+        <LinearLayout
+            android:id="@+id/ll_more"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            android:orientation="horizontal"
+            android:visibility="invisible"
+
+            >
+
+            <Button
+                android:id="@+id/bt_delete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="删除记录" />
+
+
+
+            <Button
+                android:id="@+id/bt_quite"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="退出编辑" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

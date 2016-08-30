@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:background="@android:color/white"
+    >
+    
+    <TextView 
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="描述"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:paddingLeft="20dp"
+        />
+
+    <EditText 
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        
+        android:layout_below="@+id/tv_title"
+        android:layout_toLeftOf="@+id/iv_image"
+       	android:hint="姓名"
+
+        style="@style/edit_text"
+        />
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_below="@+id/tv_title"
+        style="@style/iv_image_goods"
+        android:src="@mipmap/add"
+        />
+
+
+    <EditText
+        android:id="@+id/tv_goods"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_toLeftOf="@+id/cb_fh"
+        android:layout_below="@+id/tv_name"
+        android:layout_above="@+id/tv_text_prise"
+
+        android:hint="商品描述"
+        style="@style/edit_text"
+        />
+    <!--是否已经发货-->
+    <CheckBox
+        android:id="@+id/cb_fh"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_name"
+        android:layout_alignParentRight="true"
+        android:text="已发货"
+        android:gravity="center"
+        android:layout_margin="5dp"
+        />
+
+
+
+
+    <EditText
+        android:id="@+id/tv_text_prise"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@+id/tv_phone"
+        android:layout_toLeftOf="@+id/cb_fk"
+        android:hint="进货价"
+
+        style="@style/edit_text_input_num_count"
+        />
+    <!--是否已经付款-->
+    <CheckBox
+        android:id="@+id/cb_fk"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/cb_fh"
+        android:layout_alignParentRight="true"
+        android:text="已付款"
+        android:gravity="center"
+        android:layout_margin="5dp"
+
+        />
+
+
+
+    <!--phone-->
+    <EditText
+        android:id="@+id/tv_phone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@+id/tv_address"
+        android:hint="手机号(选填)"
+        style="@style/edit_text_phone"
+        />
+    <!--address-->
+    <EditText
+        android:id="@+id/tv_address"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@+id/ll_bts"
+        android:hint="地址(选填)"
+        style="@style/edit_text"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/ll_bts"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        >
+        <Button 
+            android:id="@+id/bt_dis"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:text="取消"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            />
+        <Button 
+            android:id="@+id/bt_ok"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:text="确定"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+    <ListView
+        style="@style/list_person"
+        android:layout_below="@+id/tv_name"
+
+        >
+
+    </ListView>
+
+</RelativeLayout>
