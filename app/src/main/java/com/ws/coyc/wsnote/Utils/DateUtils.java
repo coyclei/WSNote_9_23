@@ -17,6 +17,7 @@ public class DateUtils {
      * 获取当前时间--如：2012-11-06 12:12:10
      */
     public static String getCurrentDate() {
+
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         return format.format(date);
