@@ -26,18 +26,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="新增订单"
-            android:layout_toLeftOf="@+id/tv_bill_count"
+            android:layout_toLeftOf="@+id/rl_count"
             />
-        <TextView
-            android:id="@+id/tv_bill_count"
-            style="@style/text_count"
+        <RelativeLayout
+            android:id="@+id/rl_count"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            >
+            <TextView
+                android:id="@+id/tv_bill_count"
+                style="@style/text_count"
 
-            />
-        <TextView
-            android:id="@+id/tv_bill_money"
-            style="@style/text_count"
-            android:layout_below="@+id/tv_bill_count"
-            />
+                />
+            <TextView
+                android:id="@+id/tv_bill_money"
+                style="@style/text_count"
+                android:layout_below="@+id/tv_bill_count"
+                />
+
+        </RelativeLayout>
+
         <LinearLayout
             android:id="@+id/ll_more"
             android:layout_width="match_parent"

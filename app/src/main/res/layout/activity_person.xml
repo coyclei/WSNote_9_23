@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_person"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="我的客户"
+        android:background="@android:color/holo_red_light"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="20dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        />
+    <ListView
+        android:id="@+id/lv_list"
+        android:layout_below="@id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    </ListView>
+
+</RelativeLayout>

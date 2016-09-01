@@ -110,6 +110,9 @@
             />
 
         <!--address-->
+        <!--android:background="@drawable/select_text"-->
+        <!--android:clickable="true"-->
+        <!--android:focusable="true"-->
         <TextView
             android:id="@+id/tv_address"
             android:layout_width="match_parent"

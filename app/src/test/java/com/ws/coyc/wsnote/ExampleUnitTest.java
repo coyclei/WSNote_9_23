@@ -21,9 +21,10 @@ public class ExampleUnitTest {
 
         System.out.print("ExampleUnitTest..........");
         Date date = new Date();
-        System.out.println(DateUtils.getYear(date));
-        System.out.println(DateUtils.getMouth(date));
-        System.out.println(DateUtils.getDay(date));
+//        System.out.println(DateUtils.getYear(date));
+//        System.out.println(DateUtils.getMouth(date));
+//        System.out.println(DateUtils.getDay(date));
+        DateUtils.getBefor30Start(date);
 
     }
 }

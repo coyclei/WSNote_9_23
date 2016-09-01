@@ -142,14 +142,13 @@ public class DateUtils {
         Calendar c = Calendar.getInstance();
         c.setTime(date);
 
-        return c.get(Calendar.DAY_OF_MONTH)-1;
+        return c.get(Calendar.DAY_OF_MONTH);
     }
     public static int getCurrentYear()
     {
         Date data = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(data);
-
         return c.get(Calendar.YEAR);
     }
     public static int getCurrentMouth()
@@ -183,6 +182,15 @@ public class DateUtils {
         }
     }
 
+    public static boolean isTheSameDay(Date d1,Date d2)
+    {
+        if(getYear(d1) == getYear(d2)&&getMouth(d1) == getMouth(d2)&&getDay(d1) == getDay(d2))
+        {
+            return true;
+        }
+        return false;
+    }
+
 
 
     public static Date getCurrentMouthStart()
@@ -207,6 +215,27 @@ public class DateUtils {
         String a = getYear(date)+"-"+getMouth(date)+"-01 00:00:00";
         System.out.println("getMouthStart  "+a);
         return ConverToDate_S(a);
+    }
+
+    public static Date getBefor30Start(Date date)
+    {
+        l.l(DateUtils.ConverToString_YMDHM(date));
+        l.l(date.getTime()+"");
+        long k = (long) 30*24*60*60*1000;
+        l.l("k.."+k);
+        long t = date.getTime()-k;
+        l.l("t..."+t);
+        Date a = new Date(t);
+        l.l(a.getTime()+"");
+        l.l(DateUtils.ConverToString_YMDHM(a));
+        return a;
+    }
+    public static Date getNextDay(Date date)
+    {
+        l.l(DateUtils.ConverToString_YMDHM(date));
+        Date a = new Date(date.getTime()+24*60*60*1000);
+        l.l(DateUtils.ConverToString_YMDHM(a));
+        return a;
     }
 
     public static Date getMouthEnd(Date date)

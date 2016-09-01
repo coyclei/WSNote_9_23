@@ -1,13 +1,16 @@
 package com.ws.coyc.wsnote.UI.Adapter;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.ws.coyc.wsnote.Data.InfoIng;
@@ -19,6 +22,7 @@ import com.ws.coyc.wsnote.Utils.ImageLoader;
 import com.ws.coyc.wsnote.Utils.MyColor;
 import com.ws.coyc.wsnote.Utils.SDFile;
 
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 
@@ -160,6 +164,39 @@ public class Info2Adapter extends BaseAdapter {
                 Intent intent = new Intent(mContext, ImageViewActivity.class);
                 intent.putExtra("path",info.get(position.position).image_url);
                 mContext.startActivity(intent);
+            }
+        });
+        holder.address.setLongClickable(true);
+        holder.address.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                Intent intent = null;  //调起百度地图客户端（Android）展示上海市"28"路公交车的检索结果
+                try {
+                    intent = Intent.getIntent("intent://map/line?coordtype=&zoom=&region=中国&name="+info.get(position.position).person.address1+"&src=coyc|wsnote#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end");
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+                mContext.startActivity(intent);   //启动调用
+
+                return true;
+            }
+        });
+        holder.phone.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse(info.get(position.position).person.phone));
+                try{
+                    mContext.startActivity(intent);
+                }catch (ActivityNotFoundException e)
+                {
+                    Toast.makeText(mContext,"Android系统版本不支持",Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+
+                return true;
             }
         });
 

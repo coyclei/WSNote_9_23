@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class InfoOver extends Info{
 
-    public Date end_date= new Date();
+//    public Date end_date= new Date();
     public int all_in_money = 0;
     public int all_out_money = 0;
 
@@ -45,7 +45,7 @@ public class InfoOver extends Info{
         strings[3] = date_start;
         strings[4] = all_in;
         strings[5] = all_out;
-        strings[6] = date_end;
+//        strings[6] = date_end;
         strings[7] = src_img;
     }
 
@@ -53,7 +53,7 @@ public class InfoOver extends Info{
     @NonNull
     private void initInfoOverInSQL(Cursor cursor) {
         initBaseInfoInSQL(cursor);
-        this.end_date = new Date(cursor.getLong(cursor.getColumnIndex(date_end)));
+//        this.end_date = new Date(cursor.getLong(cursor.getColumnIndex(date_end)));
         this.all_in_money = cursor.getInt(cursor.getColumnIndex(all_in));
         this.all_out_money = cursor.getInt(cursor.getColumnIndex(all_out));
     }
@@ -76,7 +76,7 @@ public class InfoOver extends Info{
         contentValues.put("state_fh","");
         contentValues.put("state_fk","");
         contentValues.put("dateStart", dateStart.getTime());
-        contentValues.put("date_end",end_date.getTime());
+//        contentValues.put("date_end",end_date.getTime());
         contentValues.put("src_img",image_url);
         contentValues.put("src_video","");
         contentValues.put("src_audio","");

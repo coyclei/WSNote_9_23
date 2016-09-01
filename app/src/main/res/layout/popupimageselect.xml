@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:background="@android:color/white"
+    >
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_orange_dark"
+        android:text="头像选择"
+        android:gravity="left|center_vertical"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        android:paddingLeft="15dp"
+        />
+    
+    <GridView 
+        android:layout_marginTop="50dp"
+        android:id="@+id/gv_images"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/ll_bts"
+        android:cacheColorHint="@android:color/transparent"
+        android:horizontalSpacing="3dp"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="3dp" 
+        ></GridView>
+    <LinearLayout
+        android:id="@+id/ll_bts"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        >
+        <Button 
+            android:id="@+id/bt_dis"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_orange_dark"
+            android:textSize="20sp"
+            android:text="取消"
+            android:textColor="@android:color/white"
+            />
+       
+    </LinearLayout>
+    
+
+</RelativeLayout>

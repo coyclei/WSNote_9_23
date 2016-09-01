@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -25,7 +26,11 @@
             android:name=".UI.Activity.WSNoteInfo"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_wsnote_info"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".UI.Activity.PersonActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity android:name=".UI.Activity.ChartActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--3.17 目前策划上部分个人信息项-->
+    <RelativeLayout
+        android:id="@+id/rl_1"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        >
+
+
+        <!--头像，姓名项-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+            <ImageView
+                android:id="@+id/iv_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/c"
+                />
+
+            <com.ws.coyc.wsnote.UI.Layout.CircleImageView
+                android:id="@+id/iv_face"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="50dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/add"
+                android:visibility="invisible"
+                />
+            <TextView
+                android:id="@+id/tv_name"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="65dp"
+                android:layout_toRightOf="@+id/iv_face"
+                android:layout_marginLeft="20dp"
+                android:text="coyc"
+                android:gravity="center_vertical"
+                android:textSize="19sp"
+                android:textColor="@android:color/white"
+                />
+
+
+            <TextView
+                android:id="@+id/tv_praise"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_alignLeft="@+id/tv_name"
+                android:layout_below="@+id/tv_name"
+                android:text="888praise"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:visibility="invisible"
+                />
+
+            <TextView
+                android:id="@+id/tv_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@+id/iv_face"
+                android:visibility="invisible"
+                android:text="how can i do ... what ! "
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:textColor="@android:color/white"
+                />
+
+
+        </RelativeLayout>
+
+        <!--登录与注册-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            >
+            <TextView
+                android:id="@+id/tv_regist"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="注册"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:visibility="invisible"
+                />
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:text="登录"
+                android:gravity="center"
+                android:visibility="invisible"
+                />
+        </RelativeLayout>
+
+        <!--加入与发布数目项-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/holo_red_light"
+            >
+            <RelativeLayout
+                android:id="@+id/rl_join"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <TextView
+                    android:id="@+id/tv_joinactive_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:textSize="17sp"
+                    android:text="14"
+                    android:textColor="@android:color/white"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_below="@+id/tv_joinactive_count"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:text="我的客户"
+                    android:textColor="@android:color/white"
+                    />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rl_create"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <TextView
+                    android:id="@+id/tv_createactive_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:textSize="17sp"
+                    android:text="14"
+                    android:textColor="@android:color/white"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_below="@+id/tv_createactive_count"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:text="我的仓库"
+                    android:textColor="@android:color/white"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!--底部可滑动部分-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/rl_1"
+        >
+        <!--更多操作部分-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/tv_version"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="版本信息"
+                android:textColor="@android:color/white"
+                android:textSize="17sp"
+                android:background="@android:color/holo_blue_light"
+                android:layout_marginTop="2dp"
+                />
+            <TextView
+                android:id="@+id/tv_setpersoninfo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="检查更新"
+                android:textColor="@android:color/white"
+                android:textSize="17sp"
+                android:background="@android:color/holo_blue_light"
+                android:layout_marginTop="2dp"
+                android:layout_below="@+id/tv_version"
+                android:visibility="invisible"
+                />
+
+            <RelativeLayout
+                android:id="@+id/rl_exit"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="200dp"
+
+                >
+
+                <Button
+                    android:id="@+id/tv_loginOut"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="退出当前账号"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp"
+                    android:background="@android:color/holo_red_light"
+                    android:layout_marginTop="2dp"
+                    android:visibility="invisible"
+                    />
+
+                <Button
+                    android:id="@+id/tv_exit"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="退出应用"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp"
+                    android:background="@android:color/holo_red_light"
+                    android:layout_marginTop="2dp"
+                    android:layout_below="@+id/tv_loginOut"
+                    android:clickable="true"
+                    />
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
+
+
+
+
+
+

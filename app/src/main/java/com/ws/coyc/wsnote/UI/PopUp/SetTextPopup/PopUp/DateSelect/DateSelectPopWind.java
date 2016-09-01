@@ -305,9 +305,16 @@ public class DateSelectPopWind {
 	}
 
 	private void setDay() {
-		text.setText("查看"+infos_year.get(listPosition_year.position).date+"年"+
-                infos_mouth.get(listPosition_mouth.position).date+"月"+
-                infos_day.get(listPosition_day.position).date+"号的账单");
+		try {
+
+			text.setText("查看"+infos_year.get(listPosition_year.position).date+"年"+
+					infos_mouth.get(listPosition_mouth.position).date+"月"+
+					infos_day.get(listPosition_day.position).date+"号的账单");
+		}catch (IndexOutOfBoundsException e)
+		{
+			e.printStackTrace();
+		}
+
 	}
 
 	private void setMouth() {

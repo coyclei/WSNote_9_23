@@ -19,6 +19,11 @@ public class Person {
     public String address2 = "";
     public String phone = "";
 
+    ////////////////////////
+    public int count = 0;
+    public int all_prise_in = 0;
+    public int all_prise_out = 0;
+
     public static String[] strings1 = {"_id",DataManager.name,DataManager.address1,DataManager.address2,DataManager.phone};
 
 
@@ -28,7 +33,7 @@ public class Person {
 
     public Person(Cursor cursor)
     {
-
+        this.id = cursor.getInt(cursor.getColumnIndex("_id"));
         this.address1 = cursor.getString(cursor.getColumnIndex(DataManager.address1));
         this.address2 = cursor.getString(cursor.getColumnIndex(DataManager.address2));
         this.name = cursor.getString(cursor.getColumnIndex(DataManager.name));
@@ -36,6 +41,7 @@ public class Person {
         l.l("********************************************person");
         l.l("address1"+address1);
         l.l("address2"+address2);
+
         l.l("name"+name);
         l.l("phone"+phone);
     }

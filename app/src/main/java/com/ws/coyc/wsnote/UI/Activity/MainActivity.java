@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.ws.coyc.wsnote.Data.DataManager;
@@ -30,6 +31,7 @@ import com.ws.coyc.wsnote.UI.Adapter.MyPagerAdapter;
 import com.ws.coyc.wsnote.UI.Fragment.F_1;
 import com.ws.coyc.wsnote.UI.Fragment.F_2;
 import com.ws.coyc.wsnote.UI.Fragment.F_3;
+import com.ws.coyc.wsnote.UI.Fragment.F_4;
 import com.ws.coyc.wsnote.UI.PopUp.SetTextPopup.PopUp.DateSelect.DateSelectPopWind;
 import com.ws.coyc.wsnote.UI.PopUp.SetTextPopup.PopUp.DateSelect.OnSelectDateArea;
 
@@ -58,6 +60,7 @@ public class MainActivity extends FragmentActivity {
     private F_1 mF_1;
     private F_2 mF_2;
     private F_3 mF_3;
+    private F_4 mF_4;
 
     private RelativeLayout mRl_topBar;
     private TextView mTv_title;
@@ -72,6 +75,10 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        l.l("qqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+        Toast.makeText(getBaseContext(),"9111",Toast.LENGTH_SHORT).show();
+
+
 
         initData();
         initView();
@@ -106,10 +113,11 @@ public class MainActivity extends FragmentActivity {
         mF_1 = new F_1();
         mF_2 = new F_2();
         mF_3 = new F_3();
-
+        mF_4 = new F_4();
         mFragments.add(mF_1);
         mFragments.add(mF_2);
         mFragments.add(mF_3);
+        mFragments.add(mF_4);
 
 //        receiver = new CameraBroadcastReceiver();
 //        IntentFilter filter = new IntentFilter();
@@ -124,27 +132,36 @@ public class MainActivity extends FragmentActivity {
         mRl_topBar = (RelativeLayout) findViewById(R.id.rl_titlebar);
 
         mTv_title = (TextView) findViewById(R.id.tv_title);
-        mTv_title.setText("本月");
+        mTv_title.setText("前30天");
         mTv_title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                l.l("onclic");
-                exitSerach();
-                dateSelectPopWind.show();
+
+                if(mViewPager.getCurrentItem()<3)
+                {
+                    exitSerach();
+                    dateSelectPopWind.show();
+                }else
+                {
+
+                }
             }
         });
         mTv_title.setLongClickable(true);
         mTv_title.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                l.l("onLongClick");
 
-                DataManager.getInstance().toCurrentDate();
-                mF_1.updateList();
-                mF_2.updateList();
-                mF_3.updateList();
-                mTv_choose_date.setText("本月");
-                exitSerach();
+                if(mViewPager.getCurrentItem()<3)
+                {
+                    DataManager.getInstance().toCurrentDate();
+                    mF_1.updateList();
+                    mF_2.updateList();
+                    mF_3.updateList();
+                    mTv_choose_date.setText("前30天");
+                    exitSerach();
+                }
+
                 return true;
             }
         });
@@ -171,8 +188,8 @@ public class MainActivity extends FragmentActivity {
 
         mPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), mFragments);
         mViewPager.setAdapter(mPagerAdapter);
-        mViewPager.setCurrentItem(1);
-        mViewPager.setOffscreenPageLimit(3);//设置最大页面缓存数(不含当前页面)
+        mViewPager.setCurrentItem(2);
+        mViewPager.setOffscreenPageLimit(4);//设置最大页面缓存数(不含当前页面)
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -191,7 +208,7 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
-        mTv_title.setText("2 交易中");
+        mTv_title.setText("3 已完成");
 
         mIb_serach = (ImageButton) findViewById(R.id.bt_search);
         mEt_serach = (EditText) findViewById(R.id.et_search);
@@ -209,7 +226,6 @@ public class MainActivity extends FragmentActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                l.l("afterTextChanged ..."+editable.toString());
                 if(editable.length() == 0)
                 {
                     return;
@@ -217,7 +233,6 @@ public class MainActivity extends FragmentActivity {
                 DataManager.getInstance().findBillByKeyWord(mEt_serach.getText().toString(), new OnFindBill() {
                     @Override
                     public void onfind() {
-                        l.l("onfind bill");
                         mF_1.updateList();
                         mF_2.updateList();
                         mF_3.updateList();
@@ -252,26 +267,23 @@ public class MainActivity extends FragmentActivity {
                 Intent intent = new Intent(MainActivity.this,WSNoteInfo.class);
                 startActivity(intent);
 
-                try {
-                    intent = Intent.getIntent("intent://map/line?coordtype=&zoom=&region=上海&name=28&src=yourCompanyName|yourAppName#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end");  //调起百度地图客户端（Android）展示上海市"28"路公交车的检索结果
-                } catch (URISyntaxException e) {
-                    e.printStackTrace();
-                }
-                startActivity(intent);   //启动调用
-
                 return true;
             }
         });
     }
 
     private void exitSerach() {
-        isSerachMode = false;
-        mEt_serach.setVisibility(View.INVISIBLE);
-        mIb_serach.setImageResource(R.mipmap.search);
-        DataManager.getInstance().refreshInfoByDate();
-        mF_1.updateList();
-        mF_2.updateList();
-        mF_3.updateList();
+        if(isSerachMode)
+        {
+            isSerachMode = false;
+            mEt_serach.setVisibility(View.INVISIBLE);
+            mIb_serach.setImageResource(R.mipmap.search);
+            DataManager.getInstance().refreshInfoByDate();
+            mF_1.updateList();
+            mF_2.updateList();
+            mF_3.updateList();
+        }
+
     }
 
     private boolean isSerachMode = false;
@@ -288,14 +300,22 @@ public class MainActivity extends FragmentActivity {
             case 0:
                 mTv_title.setText("1 待采购");
                 mRl_search.setVisibility(View.VISIBLE);
+                mTv_choose_date.setVisibility(View.VISIBLE);
                 break;
             case 1:
                 mTv_title.setText("2 交易中");
                 mRl_search.setVisibility(View.VISIBLE);
+                mTv_choose_date.setVisibility(View.VISIBLE);
                 break;
-            default:
+            case 2:
                 mTv_title.setText("3 已完成");
                 mRl_search.setVisibility(View.VISIBLE);
+                mTv_choose_date.setVisibility(View.VISIBLE);
+                break;
+            default:
+                mTv_title.setText("WsNote");
+                mRl_search.setVisibility(View.INVISIBLE);
+                mTv_choose_date.setVisibility(View.INVISIBLE);
                 break;
         }
     }

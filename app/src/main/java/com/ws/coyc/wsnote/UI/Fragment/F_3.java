@@ -1,6 +1,7 @@
 package com.ws.coyc.wsnote.UI.Fragment;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,12 +15,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
 import com.ws.coyc.wsnote.Data.DataManager;
 import com.ws.coyc.wsnote.Data.InfoOver;
 import com.ws.coyc.wsnote.R;
+import com.ws.coyc.wsnote.UI.Activity.ChartActivity;
 import com.ws.coyc.wsnote.UI.Adapter.Info3Adapter;
 import com.ws.coyc.wsnote.UI.Adapter.ListPosition;
 import com.ws.coyc.wsnote.UI.PopUp.SetTextPopup.OnDescribeInterface3;
@@ -53,6 +56,7 @@ public class F_3 extends Fragment {
     private Button mBt_delete;
     private Button mBt_quite;
 
+    private RelativeLayout mRl_count;
     private TextView mTv_bill_count;
     private TextView mTv_bill_money;
 
@@ -104,6 +108,16 @@ public class F_3 extends Fragment {
     }
 
     private void initView() {
+
+        mRl_count = (RelativeLayout) mView.findViewById(R.id.rl_count);
+        mRl_count.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, ChartActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
+
         mTv_bill_count = (TextView) mView.findViewById(R.id.tv_bill_count);
         mTv_bill_money = (TextView) mView.findViewById(R.id.tv_bill_money);
         initBillText();
@@ -261,7 +275,7 @@ public class F_3 extends Fragment {
     public void addInfoDataIn3(String name, String text, String prise_in, String prise_out,String phone,String address,String path) {
         InfoOver info3 = new InfoOver();
         info3.dateStart = new Date();
-        info3.end_date = new Date();
+//        info3.end_date = new Date();
         info3.all_out_money = Integer.parseInt(prise_out);
         info3.all_in_money = Integer.parseInt(prise_in);
         info3.person.name = name;

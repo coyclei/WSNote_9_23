@@ -28,6 +28,8 @@ public class DataManager {
     public  ArrayList<InfoIng> infos_ing = new ArrayList<>();
     public  ArrayList<InfoOver> infos_over = new ArrayList<>();
 
+    public ArrayList<Person> persons = new ArrayList<>();
+
     private static DataManager ourInstance = new DataManager();
 
     public static DataManager getInstance() {
@@ -56,12 +58,55 @@ public class DataManager {
         //initData
         toCurrentDate();
 
+        //initPerson
+//        initPersonInfo();
+
+    }
+
+    public void initPersonInfo() {
+        persons.clear();
+        Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_PERSON_NAME).getDataWithItems(Person.strings1);
+        cursor.moveToFirst();
+        int size_c = cursor.getCount();
+        for(int i = 0;i<size_c;i++)
+        {
+            persons.add(new Person(cursor));
+            cursor.moveToNext();
+        }
+
+
+        int size = persons.size();
+        String[] strings = {Info.all_in,Info.all_out};
+        for(int i = 0;i<size;i++)
+        {
+            Cursor cursor_bill =  SQLiteManager.getInstance().getTableByName(TABLE_BILL_NAME).serach(Info.name_id,strings,persons.get(i).id+"");
+            cursor_bill.moveToFirst();
+            int size_bill = cursor_bill.getCount();
+            persons.get(i).count = size_bill;
+            for(int k = 0;k<size_bill;k++)
+            {
+                int all_in = cursor_bill.getInt(cursor_bill.getColumnIndex(Info.all_in));
+                int all_out = cursor_bill.getInt(cursor_bill.getColumnIndex(Info.all_out));
+                persons.get(i).all_prise_in+=all_in;
+                persons.get(i).all_prise_out+=all_out;
+                cursor_bill.moveToNext();
+            }
+            cursor_bill.close();
+        }
+    }
+
+    public int getPersonSize()
+    {
+        Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_PERSON_NAME).getDataWithItems(Person.strings1);
+        int size = cursor.getCount();
+        cursor.close();
+        return size;
     }
 
     public void toCurrentDate() {
         Date date = new Date();
-        startDate = DateUtils.getMouthStart(date);
-        endDate = DateUtils.getMouthEnd(date);
+        startDate = DateUtils.getBefor30Start(date);
+        endDate = DateUtils.getNextDay(date);
         refreshInfoByDate(startDate,endDate);
     }
 
@@ -324,7 +369,7 @@ public class DataManager {
         items.add(new Item(Info.state_fh,Item.item_type_text));
         items.add(new Item(Info.state_fk,Item.item_type_text));
         items.add(new Item(Info.date_start,Item.item_type_long));
-        items.add(new Item(Info.date_end,Item.item_type_long));
+//        items.add(new Item(Info.date_end,Item.item_type_long));
         items.add(new Item(Info.src_img,Item.item_type_text));
         items.add(new Item(Info.src_video,Item.item_type_text));
         items.add(new Item(Info.src_audio,Item.item_type_text));

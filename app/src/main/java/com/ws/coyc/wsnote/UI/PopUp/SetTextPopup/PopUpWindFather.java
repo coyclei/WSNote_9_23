@@ -37,6 +37,7 @@ import com.ws.coyc.wsnote.Utils.ImageLoader;
 import com.ws.coyc.wsnote.Utils.SDFile;
 
 import java.io.File;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 
@@ -164,6 +165,7 @@ public class PopUpWindFather{
 		mText_goods.setText(goods);
 		mTv_phone.setText(phone);
 		mTv_address.setText(address);
+
 
 		mText_name.setFocusable(true);
 		mText_name.requestFocus();
