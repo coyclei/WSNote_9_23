@@ -3,12 +3,166 @@
     android:id="@+id/activity_chart"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
 >
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="账单统计"
+        android:background="@android:color/holo_red_light"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="20dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        />
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart1"
+        android:layout_below="@+id/tv_title"
+        android:id="@+id/chart_count"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:visibility="invisible"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         />
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_below="@+id/tv_title"
+        android:id="@+id/chart_money"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        />
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_below="@+id/tv_title"
+        android:id="@+id/chart_all_out"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:visibility="invisible"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_checks"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/chart_count"
+        android:background="@android:color/holo_red_light"
+        >
+        <CheckBox
+            android:id="@+id/cb_count"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:checked="false"
+            android:text="订单数"
+            style="@style/chart_checkbox"
+            android:textColor="@android:color/white"
+            />
+        <CheckBox
+            android:id="@+id/cb_money"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:checked="true"
+            android:text="利润"
+            style="@style/chart_checkbox"
+            android:textColor="@android:color/white"
+            />
+        <CheckBox
+            android:id="@+id/cb_all_out"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:checked="false"
+            android:text="销售额"
+            style="@style/chart_checkbox"
+            android:textColor="@android:color/white"
+            />
+
+    </LinearLayout>
+
+
+    <!--底部可滑动部分-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/ll_checks"
+        >
+        <!--更多操作部分-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_count"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="17sp"
+                android:layout_marginLeft="20dp"
+                android:padding="2dp"
+                android:textColor="@android:color/black"
+
+                />
+            <TextView
+                android:id="@+id/tv_all_out"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="17sp"
+                android:layout_marginLeft="20dp"
+                android:padding="2dp"
+                android:layout_below="@+id/tv_count"
+                android:textColor="@android:color/black"
+                />
+            <TextView
+                android:id="@+id/tv_all_get"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="17sp"
+                android:layout_marginLeft="20dp"
+                android:padding="2dp"
+                android:layout_below="@+id/tv_all_out"
+                android:textColor="@android:color/black"
+                />
+            <TextView
+                android:id="@+id/tv_arv_day_get"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="17sp"
+                android:layout_marginLeft="20dp"
+                android:padding="2dp"
+                android:layout_below="@+id/tv_all_get"
+                android:textColor="@android:color/black"
+                />
+            <TextView
+                android:id="@+id/tv_arv_count_get"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="17sp"
+                android:layout_marginLeft="20dp"
+                android:padding="2dp"
+                android:layout_below="@+id/tv_arv_day_get"
+                android:textColor="@android:color/black"
+                />
+            <TextView
+                android:id="@+id/pre_get_and_out"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="17sp"
+                android:layout_marginLeft="20dp"
+                android:padding="2dp"
+                android:layout_below="@+id/tv_arv_count_get"
+
+                android:textColor="@android:color/black"
+                />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
 
 </RelativeLayout>

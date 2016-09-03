@@ -217,25 +217,27 @@ public class DateUtils {
         return ConverToDate_S(a);
     }
 
-    public static Date getBefor30Start(Date date)
+    public static Date getBeforNDay(Date date,int n)
     {
-        l.l(DateUtils.ConverToString_YMDHM(date));
-        l.l(date.getTime()+"");
-        long k = (long) 30*24*60*60*1000;
-        l.l("k.."+k);
+        long k = (long) n*24*60*60*1000;
         long t = date.getTime()-k;
-        l.l("t..."+t);
         Date a = new Date(t);
-        l.l(a.getTime()+"");
-        l.l(DateUtils.ConverToString_YMDHM(a));
         return a;
     }
+
+
     public static Date getNextDay(Date date)
     {
-        l.l(DateUtils.ConverToString_YMDHM(date));
         Date a = new Date(date.getTime()+24*60*60*1000);
-        l.l(DateUtils.ConverToString_YMDHM(a));
         return a;
+    }
+
+    public static Date getEndofZheDay(Date date)
+    {
+        String d = DateUtils.getYear(date)+"-"+
+                DateUtils.getMouth(date)+"-"+
+                DateUtils.getDay(date)+" 23:59:59";
+        return ConverToDate_S(d);
     }
 
     public static Date getMouthEnd(Date date)

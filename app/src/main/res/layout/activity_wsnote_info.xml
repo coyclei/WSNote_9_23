@@ -8,38 +8,62 @@
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
-    <TextView
-        android:id="@+id/fullscreen_content"
+    <!--底部可滑动部分-->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="left"
-        android:keepScreenOn="true"
-        android:text="Wsnote版本:2.2.1\n
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/ll_checks"
+        >
+    <!--更多操作部分-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/fullscreen_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="left"
+            android:keepScreenOn="true"
+            android:text="Wsnote版本:2.2.5 2016-9-3\n\n
+            细节优化\n\n\n
+Wsnote版本:2.2.4\n\n\n
 新增：\n
-1，长按地址支持直接调用百度导航\n
-2，长按电话支持呼叫该号码\n
-3，新增WsNote界面，目前在其中能进入“我的客户”进行查询，以及查看版本更新信息。\n
-4，新增“我的客户”界面列表\n
+1，支持直接调用百度导航。点击信息栏中地图图标\n
+2，支持呼叫该号码。点击信息栏中电话图标\n
+3，新增WsNote界面。\n
+4，新增“我的客户”界面列表以及顾客数据统计表。\n
+5，新增已完成账单的数据统计表。点击右下角按钮即可进行查看。\n
+\n\n
 优化：\n
-1，默认显示“已完成”列表。\n
-2，默认显示前30天的订单，而不是之前的“本月”。\n
-修复：\n
-1，修复每月1号无法开启应用的bug。\n
-2，修正日期显示器初始日期。\n
-已知问题：\n
+1，默认显示“已完成”列表，而不是之前的“交易中”。\n
+2，默认显示前7天的订单，而不是之前的“本月”。\n
+3，优化图标\n
+\n\n
+修复：
+1，修正日期显示器初始日期。\n
+\n\n
+已知问题：
 1，我的客户数量显示未能及时刷新（但是数据内容是实时刷新的），只是显示上存在问题。\n"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="10dp"
-        />
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            />
+    </RelativeLayout>
+    </ScrollView>
+
+
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:visibility="gone"
+
+        >
 
         <LinearLayout
             android:id="@+id/fullscreen_content_controls"

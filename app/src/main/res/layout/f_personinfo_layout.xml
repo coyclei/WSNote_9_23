@@ -126,7 +126,7 @@
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
                     android:textSize="17sp"
-                    android:text="14"
+                    android:text="0"
                     android:textColor="@android:color/white"
                     />
                 <TextView
@@ -154,7 +154,7 @@
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
                     android:textSize="17sp"
-                    android:text="14"
+                    android:text="暂未开放"
                     android:textColor="@android:color/white"
                     />
                 <TextView

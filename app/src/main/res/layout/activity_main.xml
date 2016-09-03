@@ -34,7 +34,7 @@
             android:layout_marginLeft="20dp"
             android:textSize="14sp"
             android:textColor="@android:color/white"
-            android:text="点击选择时间" />
+            android:text="最近7天" />
         <TextView
             android:id="@+id/tv_music_title1"
             android:layout_width="150dp"
@@ -47,7 +47,6 @@
             android:textColor="@android:color/white"
             android:gravity="center_vertical|right"
             android:padding="10dp"
-            android:text="氨基酸等看见爱是不爱好是不大好啊爱仕达"
             android:visibility="invisible"
 
         />
@@ -89,7 +88,7 @@
                 android:padding="8dp"
                 android:background="@android:color/transparent"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/search"
+                android:src="@mipmap/serach"
                 />
 
         </RelativeLayout>

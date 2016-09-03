@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -99,9 +100,11 @@ public class Info2Adapter extends BaseAdapter {
         {
             holder.address.setVisibility(View.VISIBLE);
             holder.phone.setVisibility(View.VISIBLE);
+            holder.ib_phone.setVisibility(View.VISIBLE);
+            holder.ib_address.setVisibility(View.VISIBLE);
 
-            holder.address.setText("地    址 : "+infoIng.person.address1);
-            holder.phone.setText("手机号 : "+infoIng.person.phone);
+            holder.address.setText(infoIng.person.address1);
+            holder.phone.setText(infoIng.person.phone);
             if(SDFile.CheckFileExistsABS(infoIng.image_url))
             {
                 holder.image.setVisibility(View.VISIBLE);
@@ -116,6 +119,8 @@ public class Info2Adapter extends BaseAdapter {
             holder.address.setVisibility(View.GONE);
             holder.phone.setVisibility(View.GONE);
             holder.image.setVisibility(View.GONE);
+            holder.ib_phone.setVisibility(View.GONE);
+            holder.ib_address.setVisibility(View.GONE);
             convertView.setBackgroundColor(MyColor.coffe_5);
         }
         
@@ -157,6 +162,8 @@ public class Info2Adapter extends BaseAdapter {
         holder.phone = (TextView) convertView.findViewById(R.id.tv_phone);
         holder.address = (TextView) convertView.findViewById(R.id.tv_address);
         holder.image = (CircleImageView) convertView.findViewById(R.id.iv_image);
+        holder.ib_phone = (ImageButton) convertView.findViewById(R.id.ib_phone);
+        holder.ib_address = (ImageButton) convertView.findViewById(R.id.ib_address);
 
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,28 +173,25 @@ public class Info2Adapter extends BaseAdapter {
                 mContext.startActivity(intent);
             }
         });
-        holder.address.setLongClickable(true);
-        holder.address.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.ib_address.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View view) {
-
-                Intent intent = null;  //调起百度地图客户端（Android）展示上海市"28"路公交车的检索结果
+            public void onClick(View view) {
+                Intent intent = null;  //调起百度地图客户端（Android）
                 try {
                     intent = Intent.getIntent("intent://map/line?coordtype=&zoom=&region=中国&name="+info.get(position.position).person.address1+"&src=coyc|wsnote#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end");
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
                 }
-                mContext.startActivity(intent);   //启动调用
 
-                return true;
+                mContext.startActivity(intent);   //启动调用
             }
         });
-        holder.phone.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
 
+        holder.ib_phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_CALL);
-                intent.setData(Uri.parse(info.get(position.position).person.phone));
+                intent.setData(Uri.parse("18274833970"));
                 try{
                     mContext.startActivity(intent);
                 }catch (ActivityNotFoundException e)
@@ -195,8 +199,6 @@ public class Info2Adapter extends BaseAdapter {
                     Toast.makeText(mContext,"Android系统版本不支持",Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
-
-                return true;
             }
         });
 
@@ -217,5 +219,7 @@ public class Info2Adapter extends BaseAdapter {
         public TextView phone;
         public TextView address;
         public CircleImageView image;
+        public ImageButton ib_phone;
+        public ImageButton ib_address;
     }
 }

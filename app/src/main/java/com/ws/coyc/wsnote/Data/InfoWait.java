@@ -62,10 +62,12 @@ public class InfoWait extends Info {
         contentValues.put("state_fk", "");
         contentValues.put("dateStart", dateStart.getTime());
 //        contentValues.put("date_end", dateStart.getTime());
+        contentValues.put("date_end","");
         l.l("image_url....................."+image_url);
         contentValues.put("src_img", image_url);
         contentValues.put("src_video", "");
         contentValues.put("src_audio", "");
+        contentValues.put("date_end", "");
         return contentValues;
     }
 

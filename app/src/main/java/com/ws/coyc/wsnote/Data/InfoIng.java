@@ -72,6 +72,7 @@ public class InfoIng extends Info{
         contentValues.put(state_fk,fk_state);
         contentValues.put(date_start, dateStart.getTime());
 //        contentValues.put(date_end,dateStart.getTime());
+        contentValues.put("date_end","");
         contentValues.put(src_img,image_url);
         contentValues.put(src_video,"");
         contentValues.put(src_audio,"");

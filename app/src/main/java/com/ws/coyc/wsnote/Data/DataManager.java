@@ -6,9 +6,12 @@ import android.support.annotation.NonNull;
 import com.ws.coyc.wsnote.SQLiteHelper.Item;
 import com.ws.coyc.wsnote.SQLiteHelper.SQLiteManager;
 import com.ws.coyc.wsnote.SQLiteHelper.Utils.l;
+import com.ws.coyc.wsnote.Utils.ComparatorPerson;
 import com.ws.coyc.wsnote.Utils.DateUtils;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 /**
@@ -93,6 +96,8 @@ public class DataManager {
             }
             cursor_bill.close();
         }
+        ComparatorPerson comparatorPerson = new ComparatorPerson();
+        Collections.sort(persons,comparatorPerson);
     }
 
     public int getPersonSize()
@@ -105,8 +110,8 @@ public class DataManager {
 
     public void toCurrentDate() {
         Date date = new Date();
-        startDate = DateUtils.getBefor30Start(date);
-        endDate = DateUtils.getNextDay(date);
+        startDate = DateUtils.getBeforNDay(date,7);
+        endDate = DateUtils.getEndofZheDay(date);
         refreshInfoByDate(startDate,endDate);
     }
 
@@ -369,7 +374,7 @@ public class DataManager {
         items.add(new Item(Info.state_fh,Item.item_type_text));
         items.add(new Item(Info.state_fk,Item.item_type_text));
         items.add(new Item(Info.date_start,Item.item_type_long));
-//        items.add(new Item(Info.date_end,Item.item_type_long));
+        items.add(new Item(Info.date_end,Item.item_type_long));
         items.add(new Item(Info.src_img,Item.item_type_text));
         items.add(new Item(Info.src_video,Item.item_type_text));
         items.add(new Item(Info.src_audio,Item.item_type_text));

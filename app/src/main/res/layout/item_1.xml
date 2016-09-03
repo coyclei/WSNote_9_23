@@ -53,6 +53,7 @@
             <!--android:textColor="@android:color/white"-->
             <!--android:textSize="16sp" />-->
         <!--phone-->
+
         <TextView
             android:id="@+id/tv_phone"
             android:layout_width="match_parent"
@@ -60,7 +61,22 @@
             android:layout_below="@+id/tv_goods"
             android:text="phone:18274833970"
             android:layout_toLeftOf="@+id/iv_image"
+            android:layout_toRightOf="@+id/ib_phone"
             style="@style/text_info" />
+
+        <ImageButton
+            android:id="@+id/ib_phone"
+            android:layout_below="@+id/tv_goods"
+            android:src="@mipmap/phone"
+            style="@style/image_button_phone"
+            />
+
+        <ImageButton
+            android:id="@+id/ib_address"
+            android:layout_below="@+id/tv_phone"
+            android:src="@mipmap/map"
+            style="@style/image_button_address"
+            />
 
         <!--address-->
         <TextView
@@ -69,6 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_phone"
             android:layout_toLeftOf="@+id/iv_image"
+            android:layout_toRightOf="@+id/ib_address"
             style="@style/text_info" />
         <!--image-->
         <com.ws.coyc.wsnote.UI.Layout.CircleImageView

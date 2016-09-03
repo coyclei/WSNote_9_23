@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ public class Show1Wind extends  PopUpWindFather{
 	private Button mBt_ok_change;
 	private Button mBt_ok_buy;
 	private Button mBt_ok_send;
-	private Button mBt_delete;
+	private ImageButton mBt_delete;
 	private OnShow1Interface anInterface;
 
 	/**
@@ -69,7 +70,7 @@ public class Show1Wind extends  PopUpWindFather{
 		mBt_ok_change = (Button) v.findViewById(R.id.bt_ok_change);
 		mBt_ok_buy = (Button) v.findViewById(R.id.bt_ok_buy);
 		mBt_ok_send = (Button) v.findViewById(R.id.bt_ok_send);
-		mBt_delete = (Button) v.findViewById(R.id.bt_delete);
+		mBt_delete = (ImageButton) v.findViewById(R.id.bt_delete);
 
 		mBt_ok_change.setOnClickListener(new OnClickListener() {
 
@@ -119,10 +120,19 @@ public class Show1Wind extends  PopUpWindFather{
 
 			@Override
 			public void onClick(View arg0) {
-				anInterface.onDelete();
-				mPopup.dismiss();
+				Toast.makeText(mContext,"长按删除",Toast.LENGTH_SHORT).show();
 			}
 		});
+		mBt_delete.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View view) {
+
+				anInterface.onDelete();
+				mPopup.dismiss();
+				return true;
+			}
+		});
+
 	}
 
 	@SuppressLint("InflateParams")

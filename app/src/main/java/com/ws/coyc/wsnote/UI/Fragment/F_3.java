@@ -179,7 +179,7 @@ public class F_3 extends Fragment {
                     if(listPosition.position == position)
                     {
                         new Show3Wind(getActivity(), infos.get(position).person.name, infos.get(position).goods, infos.get(position).all_in_money+"", infos.get(position).all_out_money+"",
-                                "订单信息", 400, true, new OnShow3Interface() {
+                                "账单信息", 400, true, new OnShow3Interface() {
                             @Override
                             public void onChange(String name, String text, String prise_in, String prise_out,String phone,String address,String path) {
                                 infos.get(position).person.name = name;
@@ -227,7 +227,7 @@ public class F_3 extends Fragment {
             mTv_bill_count.setText("");
         }else
         {
-            mTv_bill_count.setText("单数"+infos.size());
+            mTv_bill_count.setText("总账单数:"+infos.size());
         }
     }
 
@@ -291,7 +291,7 @@ public class F_3 extends Fragment {
     }
 
     public static void add(Activity activity, String name, String goods, String in_prise, OnDescribeInterface3 onDescribeInterface3,String phone,String address,String path) {
-        new TextEditPopWind3(activity,name,goods,in_prise, "新增完成订单", 400, true,onDescribeInterface3,phone,address,path).show();
+        new TextEditPopWind3(activity,name,goods,in_prise, "新增账单", 400, true,onDescribeInterface3,phone,address,path).show();
     }
 
 

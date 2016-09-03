@@ -1,7 +1,10 @@
 package com.ws.coyc.wsnote.UI.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.ws.coyc.wsnote.Data.DataManager;
@@ -17,6 +20,8 @@ public class PersonActivity extends AppCompatActivity {
     private PersonInfoAdapter adapter;
     private ListView listView;
 
+    private ImageButton ib_chart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,5 +34,14 @@ public class PersonActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.lv_list);
         listView.setAdapter(adapter);
+        ib_chart = (ImageButton) findViewById(R.id.ib_chart);
+        ib_chart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PersonActivity.this,BarChartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
 }

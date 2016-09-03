@@ -45,7 +45,6 @@ import java.util.Date;
 /**
  * 主界面
  * 包括4个Fragment与底部操作栏
- * 4个Fragment分别是“全部活动”，“已加入”，“创建”，“个人信息”
  */
 public class MainActivity extends FragmentActivity {
 
@@ -76,7 +75,7 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         l.l("qqqqqqqqqqqqqqqqqqqqqqqqqqqq");
-        Toast.makeText(getBaseContext(),"9111",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getBaseContext(),"9111",Toast.LENGTH_SHORT).show();
 
 
 
@@ -114,8 +113,8 @@ public class MainActivity extends FragmentActivity {
         mF_2 = new F_2();
         mF_3 = new F_3();
         mF_4 = new F_4();
-        mFragments.add(mF_1);
         mFragments.add(mF_2);
+        mFragments.add(mF_1);
         mFragments.add(mF_3);
         mFragments.add(mF_4);
 
@@ -132,7 +131,7 @@ public class MainActivity extends FragmentActivity {
         mRl_topBar = (RelativeLayout) findViewById(R.id.rl_titlebar);
 
         mTv_title = (TextView) findViewById(R.id.tv_title);
-        mTv_title.setText("前30天");
+        mTv_title.setText("最近7天");
         mTv_title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,7 +157,7 @@ public class MainActivity extends FragmentActivity {
                     mF_1.updateList();
                     mF_2.updateList();
                     mF_3.updateList();
-                    mTv_choose_date.setText("前30天");
+                    mTv_choose_date.setText("最近7天");
                     exitSerach();
                 }
 
@@ -255,7 +254,7 @@ public class MainActivity extends FragmentActivity {
                     mEt_serach.setVisibility(View.VISIBLE);
                     mEt_serach.setFocusable(true);
                     mEt_serach.requestFocus();
-                    mIb_serach.setImageResource(R.mipmap.close);
+                    mIb_serach.setImageResource(R.mipmap.colse);
                 }
             }
         });
@@ -277,7 +276,7 @@ public class MainActivity extends FragmentActivity {
         {
             isSerachMode = false;
             mEt_serach.setVisibility(View.INVISIBLE);
-            mIb_serach.setImageResource(R.mipmap.search);
+            mIb_serach.setImageResource(R.mipmap.serach);
             DataManager.getInstance().refreshInfoByDate();
             mF_1.updateList();
             mF_2.updateList();
@@ -297,13 +296,13 @@ public class MainActivity extends FragmentActivity {
     private void updateButtonBarByCurrentPageItem(int currentpage) {
         setBack();
         switch (currentpage) {
-            case 0:
-                mTv_title.setText("1 待采购");
+            case 1:
+                mTv_title.setText("2 待采购");
                 mRl_search.setVisibility(View.VISIBLE);
                 mTv_choose_date.setVisibility(View.VISIBLE);
                 break;
-            case 1:
-                mTv_title.setText("2 交易中");
+            case 0:
+                mTv_title.setText("1 交易中");
                 mRl_search.setVisibility(View.VISIBLE);
                 mTv_choose_date.setVisibility(View.VISIBLE);
                 break;

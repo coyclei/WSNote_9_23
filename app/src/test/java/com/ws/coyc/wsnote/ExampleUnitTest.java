@@ -1,6 +1,5 @@
 package com.ws.coyc.wsnote;
 
-import com.ws.coyc.wsnote.Utils.Calc;
 import com.ws.coyc.wsnote.Utils.DateUtils;
 
 import org.junit.Test;
@@ -24,7 +23,6 @@ public class ExampleUnitTest {
 //        System.out.println(DateUtils.getYear(date));
 //        System.out.println(DateUtils.getMouth(date));
 //        System.out.println(DateUtils.getDay(date));
-        DateUtils.getBefor30Start(date);
 
     }
 }

@@ -107,6 +107,7 @@
             android:layout_below="@+id/ll_b"
             android:layout_toLeftOf="@+id/iv_image"
             style="@style/text_info"
+            android:layout_toRightOf="@+id/ib_phone"
             />
 
         <!--address-->
@@ -120,7 +121,23 @@
             android:layout_below="@+id/tv_phone"
             android:layout_toLeftOf="@+id/iv_image"
             style="@style/text_info"
+            android:layout_toRightOf="@+id/ib_address"
             />
+
+        <ImageButton
+            android:id="@+id/ib_phone"
+            android:layout_below="@+id/ll_b"
+            android:src="@mipmap/phone"
+            style="@style/image_button_phone"
+            />
+
+        <ImageButton
+            android:id="@+id/ib_address"
+            android:layout_below="@+id/tv_phone"
+            android:src="@mipmap/map"
+            style="@style/image_button_address"
+            />
+
         <!--image-->
         <com.ws.coyc.wsnote.UI.Layout.CircleImageView
             android:id="@+id/iv_image"

@@ -76,14 +76,26 @@
                 android:layout_height="wrap_content"
                 style="@style/text_info_fk_fh_state"
                 />
-
-            <TextView
+            <RelativeLayout
                 android:layout_weight="1"
-                android:id="@+id/tv_get_money"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                style="@style/text_info"
-                />
+                android:layout_height="match_parent">
+                <ImageView
+                    android:src="@mipmap/getmoney"
+                    style="@style/image_button_address"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_get_money"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/text_info"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="left"
+                    />
+            </RelativeLayout>
+
+
         </LinearLayout>
 
 
@@ -95,6 +107,7 @@
             android:layout_below="@+id/ll_b"
             style="@style/text_info"
             android:layout_toLeftOf="@+id/iv_image"
+            android:layout_toRightOf="@+id/ib_phone"
             />
 
         <!--address-->
@@ -103,9 +116,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_phone"
+            android:layout_toRightOf="@+id/ib_address"
             style="@style/text_info"
             android:layout_toLeftOf="@+id/iv_image"
             />
+
+        <ImageButton
+            android:id="@+id/ib_phone"
+            android:layout_below="@+id/ll_b"
+            android:src="@mipmap/phone"
+            style="@style/image_button_phone"
+
+            />
+
+        <ImageButton
+            android:id="@+id/ib_address"
+            android:layout_below="@+id/tv_phone"
+            android:src="@mipmap/map"
+            style="@style/image_button_address"
+            />
+
         <!--image-->
         <com.ws.coyc.wsnote.UI.Layout.CircleImageView
             android:id="@+id/iv_image"

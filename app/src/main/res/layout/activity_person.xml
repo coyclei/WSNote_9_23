@@ -3,6 +3,7 @@
     android:id="@+id/activity_person"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     >
 
 
@@ -17,6 +18,18 @@
         android:textSize="18sp"
         android:textColor="@android:color/white"
         />
+    <ImageButton
+        android:id="@+id/ib_chart"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@mipmap/chart"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        />
+
     <ListView
         android:id="@+id/lv_list"
         android:layout_below="@id/tv_title"

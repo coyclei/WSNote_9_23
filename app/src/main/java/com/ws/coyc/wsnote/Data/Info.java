@@ -26,7 +26,7 @@ public class Info {
     public static final String state_fh = "state_fh";
     public static final String state_fk = "state_fk";
     public static final String date_start = "dateStart";
-//    public static final String date_end = "date_end";
+    public static final String date_end = "date_end";
     public static final String src_img = "src_img";
     public static final String src_video = "src_video";
     public static final String src_audio = "src_audio";
@@ -51,7 +51,7 @@ public class Info {
 
 
     public static String[] bill_strings = {"_id",name_id,all_info,single_in,single_out,
-            count,all_in,all_out,state,state_fh,state_fk,date_start,src_img,src_video,src_audio};
+            count,all_in,all_out,state,state_fh,state_fk,date_start,src_img,src_video,src_audio,date_end};
 
 //    public static String[] bill_strings_serach = {"_id",name_id,all_info, all_in,all_out,state_fh,state_fk};
 

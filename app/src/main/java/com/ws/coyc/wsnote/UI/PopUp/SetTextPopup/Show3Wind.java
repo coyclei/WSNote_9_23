@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
@@ -24,7 +25,7 @@ import com.ws.coyc.wsnote.Utils.Calc;
 public class Show3Wind extends PopUpWindFather{
 
 	private Button mOkBt;
-	private Button mBt_delete;
+	private ImageButton mBt_delete;
 
 
 	private EditText mText_in;
@@ -79,13 +80,22 @@ public class Show3Wind extends PopUpWindFather{
 		mText_in.setText(in_prise);
 		mText_out.setText(out_prise);
 
-		mBt_delete = (Button) v.findViewById(R.id.bt_delete);
+		mBt_delete = (ImageButton) v.findViewById(R.id.bt_delete);
 		mBt_delete.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
+				Toast.makeText(mContext,"长按删除",Toast.LENGTH_SHORT).show();
+			}
+		});
+
+		mBt_delete.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View view) {
+
 				describeInterface.onDelete();
 				mPopup.dismiss();
+				return true;
 			}
 		});
 

@@ -76,7 +76,7 @@ public class InfoOver extends Info{
         contentValues.put("state_fh","");
         contentValues.put("state_fk","");
         contentValues.put("dateStart", dateStart.getTime());
-//        contentValues.put("date_end",end_date.getTime());
+        contentValues.put("date_end","");
         contentValues.put("src_img",image_url);
         contentValues.put("src_video","");
         contentValues.put("src_audio","");
