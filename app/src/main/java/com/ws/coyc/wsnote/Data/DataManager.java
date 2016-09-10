@@ -2,14 +2,17 @@ package com.ws.coyc.wsnote.Data;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.support.annotation.NonNull;
-import com.ws.coyc.wsnote.SQLiteHelper.Item;
+
+import com.ws.coyc.wsnote.Data.Table.BillTable;
+import com.ws.coyc.wsnote.Data.Table.GoodsTable;
+import com.ws.coyc.wsnote.Data.Table.PersonTable;
+import com.ws.coyc.wsnote.Data.Table.SaleTable;
+import com.ws.coyc.wsnote.Data.Table.WarehouseTable;
 import com.ws.coyc.wsnote.SQLiteHelper.SQLiteManager;
 import com.ws.coyc.wsnote.SQLiteHelper.Utils.l;
 import com.ws.coyc.wsnote.Utils.ComparatorPerson;
 import com.ws.coyc.wsnote.Utils.DateUtils;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -27,9 +30,9 @@ public class DataManager {
     public Date endDate;
 
 
-    public  ArrayList<InfoWait> infos_wait = new ArrayList<>();
-    public  ArrayList<InfoIng> infos_ing = new ArrayList<>();
-    public  ArrayList<InfoOver> infos_over = new ArrayList<>();
+    public  ArrayList<BillInfoWait> infos_wait = new ArrayList<>();
+    public  ArrayList<BillInfoIng> infos_ing = new ArrayList<>();
+    public  ArrayList<BillInfoOver> infos_over = new ArrayList<>();
 
     public ArrayList<Person> persons = new ArrayList<>();
 
@@ -79,17 +82,17 @@ public class DataManager {
 
 
         int size = persons.size();
-        String[] strings = {Info.all_in,Info.all_out};
+        String[] strings = {BillTable.all_in,BillTable.all_out};
         for(int i = 0;i<size;i++)
         {
-            Cursor cursor_bill =  SQLiteManager.getInstance().getTableByName(TABLE_BILL_NAME).serach(Info.name_id,strings,persons.get(i).id+"");
+            Cursor cursor_bill =  SQLiteManager.getInstance().getTableByName(TABLE_BILL_NAME).serach(BillTable.name_id,strings,persons.get(i).id+"");
             cursor_bill.moveToFirst();
             int size_bill = cursor_bill.getCount();
             persons.get(i).count = size_bill;
             for(int k = 0;k<size_bill;k++)
             {
-                int all_in = cursor_bill.getInt(cursor_bill.getColumnIndex(Info.all_in));
-                int all_out = cursor_bill.getInt(cursor_bill.getColumnIndex(Info.all_out));
+                int all_in = cursor_bill.getInt(cursor_bill.getColumnIndex(BillTable.all_in));
+                int all_out = cursor_bill.getInt(cursor_bill.getColumnIndex(BillTable.all_out));
                 persons.get(i).all_prise_in+=all_in;
                 persons.get(i).all_prise_out+=all_out;
                 cursor_bill.moveToNext();
@@ -115,22 +118,35 @@ public class DataManager {
         refreshInfoByDate(startDate,endDate);
     }
 
+    public BillTable billTable;
+    public PersonTable personTable;
+    public GoodsTable goodsTable;
+    public SaleTable saleTable;
+    public WarehouseTable warehouseTable;
     private void initSQL(Context context) {
+        //init table
+        billTable = new BillTable();
+        personTable = new PersonTable();
+        goodsTable = new GoodsTable();
+        saleTable = new SaleTable();
+        warehouseTable = new WarehouseTable();
+
         //init SQL
         SQLiteManager.getInstance().init(context,DB_NAME);
 
-        ArrayList<Item> items_bill = initBillTableItems();
-        SQLiteManager.getInstance().registerTable(TABLE_BILL_NAME,items_bill);
-
-        ArrayList<Item> items_person = initPersonTableItems();
-        SQLiteManager.getInstance().registerTable(TABLE_PERSON_NAME,items_person);
+        SQLiteManager.getInstance().registerTable(billTable);
+        SQLiteManager.getInstance().registerTable(personTable);
+        SQLiteManager.getInstance().registerTable(goodsTable);
+        SQLiteManager.getInstance().registerTable(saleTable);
+        SQLiteManager.getInstance().registerTable(warehouseTable);
 
         SQLiteManager.getInstance().open();//when the app close you should to close the SQL
+//        SQLiteManager.getInstance().updateTable();
     }
 
     public void initInfo_wait()
     {
-        Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME).serach(Info.state,InfoWait.strings,Info.STATE_WAIT);
+        Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME).serach(BillTable.state, BillInfoWait.strings, BillInfo.STATE_WAIT);
         infos_wait = ConvertToWaitList(cursor);
 
         initPerson(infos_wait);
@@ -138,7 +154,7 @@ public class DataManager {
 
     public void initInfo_ing()
     {
-        Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME).serach(Info.state,InfoIng.strings,Info.STATE_ING);
+        Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME).serach(BillTable.state, BillInfoIng.strings, BillInfo.STATE_ING);
         infos_ing = ConvertToIngList(cursor);
 
         initPerson(infos_ing);
@@ -146,12 +162,12 @@ public class DataManager {
 
     public void initInfo_over()
     {
-        Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME).serach(Info.state,InfoOver.strings,Info.STATE_OVER);
+        Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME).serach(BillTable.state, BillInfoOver.strings, BillInfo.STATE_OVER);
         infos_over = ConvertToOverList(cursor);
         initPerson(infos_over);
     }
 
-    private void initPerson(ArrayList<? extends Info> infos) {
+    private void initPerson(ArrayList<? extends BillInfo> infos) {
         int size = infos.size();
 
         for(int i = 0;i<size;i++)
@@ -181,7 +197,7 @@ public class DataManager {
 
     private void refreshOverInfoByDate() {
         Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME)
-                .serachBetweenAB_int(Info.date_start,startDate.getTime(),endDate.getTime(),Info.state,Info.STATE_OVER);
+                .serachBetweenAB_int(BillTable.date_start,startDate.getTime(),endDate.getTime(),BillTable.state, BillInfo.STATE_OVER);
 
         infos_over = ConvertToOverList(cursor);
         initPerson(infos_over);
@@ -189,7 +205,7 @@ public class DataManager {
 
     private void refreshIngInfoByDate() {
         Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME)
-                .serachBetweenAB_int(Info.date_start,startDate.getTime(),endDate.getTime(),Info.state,Info.STATE_ING);
+                .serachBetweenAB_int(BillTable.date_start,startDate.getTime(),endDate.getTime(),BillTable.state, BillInfo.STATE_ING);
 
         l.l("refreshIngInfoByDate cursor size "+cursor.getCount());
 
@@ -201,7 +217,7 @@ public class DataManager {
     private void refreshWaitInfoByDate() {
 
         Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME)
-                .serachBetweenAB_int(Info.date_start,startDate.getTime(),endDate.getTime(),Info.state,Info.STATE_WAIT);
+                .serachBetweenAB_int(BillTable.date_start,startDate.getTime(),endDate.getTime(),BillTable.state, BillInfo.STATE_WAIT);
         infos_wait = ConvertToWaitList(cursor);
         initPerson(infos_wait);
     }
@@ -220,15 +236,15 @@ public class DataManager {
     }
 
 
-    private ArrayList<InfoWait> ConvertToWaitList(Cursor cursor) {
-        ArrayList<InfoWait> msgs = new ArrayList<>();
+    private ArrayList<BillInfoWait> ConvertToWaitList(Cursor cursor) {
+        ArrayList<BillInfoWait> msgs = new ArrayList<>();
         int resultCounts = cursor.getCount();
         if (resultCounts == 0 || !cursor.moveToFirst()) {
             return msgs;
         }
 
         for (int i = 0; i < resultCounts; i++) {
-            InfoWait temp = new InfoWait(cursor);
+            BillInfoWait temp = new BillInfoWait(cursor);
 
             msgs.add(temp);
 
@@ -239,15 +255,15 @@ public class DataManager {
 
 
 
-    private ArrayList<InfoIng> ConvertToIngList(Cursor cursor) {
-        ArrayList<InfoIng> msgs = new ArrayList<>();
+    private ArrayList<BillInfoIng> ConvertToIngList(Cursor cursor) {
+        ArrayList<BillInfoIng> msgs = new ArrayList<>();
         int resultCounts = cursor.getCount();
         if (resultCounts == 0 || !cursor.moveToFirst()) {
             return msgs;
         }
 
         for (int i = 0; i < resultCounts; i++) {
-            InfoIng temp = new InfoIng(cursor);
+            BillInfoIng temp = new BillInfoIng(cursor);
 
             msgs.add(temp);
 
@@ -258,15 +274,15 @@ public class DataManager {
 
 
 
-    private ArrayList<InfoOver> ConvertToOverList(Cursor cursor) {
-        ArrayList<InfoOver> msgs = new ArrayList<>();
+    private ArrayList<BillInfoOver> ConvertToOverList(Cursor cursor) {
+        ArrayList<BillInfoOver> msgs = new ArrayList<>();
         int resultCounts = cursor.getCount();
         if (resultCounts == 0 || !cursor.moveToFirst()) {
             return msgs;
         }
 
         for (int i = 0; i < resultCounts; i++) {
-            InfoOver temp = new InfoOver(cursor);
+            BillInfoOver temp = new BillInfoOver(cursor);
 
             msgs.add(temp);
 
@@ -277,39 +293,39 @@ public class DataManager {
 
 
 
-    public void addWaitInfo(InfoWait info)
+    public void addWaitInfo(BillInfoWait info)
     {
         infos_wait.add(info);
         info.insertInSQL();
 
     }
 
-    public void addIngInfo(InfoIng info)
+    public void addIngInfo(BillInfoIng info)
     {
         infos_ing.add(info);
         info.insertInSQL();
     }
 
-    public void addOverInfo(InfoOver info)
+    public void addOverInfo(BillInfoOver info)
     {
         infos_over.add(info);
         info.insertInSQL();
     }
 
     // add one new person
-    public void addWaitInfoAnyWay(InfoWait info)
+    public void addWaitInfoAnyWay(BillInfoWait info)
     {
         infos_wait.add(info);
         info.insertInSQLAnyWay();
     }
 
-    public void addIngInfoAnyWay(InfoIng info)
+    public void addIngInfoAnyWay(BillInfoIng info)
     {
         infos_ing.add(info);
         info.insertInSQLAnyWay();
     }
 
-    public void addOverInfoAnyWay(InfoOver info)
+    public void addOverInfoAnyWay(BillInfoOver info)
     {
         infos_over.add(info);
         info.insertInSQLAnyWay();
@@ -317,19 +333,19 @@ public class DataManager {
 
 
 
-    public void removeWaitInfo(InfoWait info)
+    public void removeWaitInfo(BillInfoWait info)
     {
         infos_wait.remove(info);
         info.deleteInSQL();
     }
 
-    public void removeIngInfo(InfoIng info)
+    public void removeIngInfo(BillInfoIng info)
     {
         infos_ing.remove(info);
         info.deleteInSQL();
     }
 
-    public void removeOverInfo(InfoOver info)
+    public void removeOverInfo(BillInfoOver info)
     {
         infos_over.remove(info);
         info.deleteInSQL();
@@ -340,53 +356,54 @@ public class DataManager {
 
 
 
-    public static final String name = "name";
-    public static final String address1 = "address1";
-    public static final String address2 = "address2";
-    public static final String phone = "phone";
-    public static final String src_photo = "src_photo";
-    @NonNull
-    private ArrayList<Item> initPersonTableItems() {
-        ArrayList<Item> items_person = new ArrayList<>();
+//    public static final String name = "name";
+//    public static final String address1 = "address1";
+//    public static final String address2 = "address2";
+//    public static final String phone = "phone";
+//    public static final String src_photo = "src_photo";
 
-        items_person.add(new Item(name  , Item.item_type_text));
-        items_person.add(new Item(address1  , Item.item_type_text));
-        items_person.add(new Item(address2  , Item.item_type_text));
-        items_person.add(new Item(phone  , Item.item_type_text));
-        items_person.add(new Item(src_photo  , Item.item_type_text));
+//    @NonNull
+//    private ArrayList<Item> initPersonTableItems() {
+//        ArrayList<Item> items_person = new ArrayList<>();
+//
+//        items_person.add(new Item(name  , Item.item_type_text));
+//        items_person.add(new Item(address1  , Item.item_type_text));
+//        items_person.add(new Item(address2  , Item.item_type_text));
+//        items_person.add(new Item(phone  , Item.item_type_text));
+//        items_person.add(new Item(src_photo  , Item.item_type_text));
+//
+//        return items_person;
+//    }
 
-        return items_person;
-    }
 
 
-
-    @NonNull
-    private ArrayList<Item> initBillTableItems() {
-        ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item(Info.name_id,Item.item_type_integer));
-        items.add(new Item(Info.all_info,Item.item_type_text));
-        items.add(new Item(Info.single_in,Item.item_type_integer));
-        items.add(new Item(Info.single_out,Item.item_type_integer));
-        items.add(new Item(Info.count,Item.item_type_integer));
-        items.add(new Item(Info.all_in,Item.item_type_integer));
-        items.add(new Item(Info.all_out,Item.item_type_integer));
-        items.add(new Item(Info.state,Item.item_type_text));
-        items.add(new Item(Info.state_fh,Item.item_type_text));
-        items.add(new Item(Info.state_fk,Item.item_type_text));
-        items.add(new Item(Info.date_start,Item.item_type_long));
-        items.add(new Item(Info.date_end,Item.item_type_long));
-        items.add(new Item(Info.src_img,Item.item_type_text));
-        items.add(new Item(Info.src_video,Item.item_type_text));
-        items.add(new Item(Info.src_audio,Item.item_type_text));
-        return items;
-    }
+//    @NonNull
+//    private ArrayList<Item> initBillTableItems() {
+//        ArrayList<Item> items = new ArrayList<>();
+//        items.add(new Item(BillTable.name_id,Item.item_type_integer));
+//        items.add(new Item(BillTable.all_info,Item.item_type_text));
+//        items.add(new Item(BillTable.single_in,Item.item_type_integer));
+//        items.add(new Item(BillTable.single_out,Item.item_type_integer));
+//        items.add(new Item(BillTable.count,Item.item_type_integer));
+//        items.add(new Item(BillTable.all_in,Item.item_type_integer));
+//        items.add(new Item(BillTable.all_out,Item.item_type_integer));
+//        items.add(new Item(BillTable.state,Item.item_type_text));
+//        items.add(new Item(BillTable.state_fh,Item.item_type_text));
+//        items.add(new Item(BillTable.state_fk,Item.item_type_text));
+//        items.add(new Item(BillTable.date_start,Item.item_type_long));
+//        items.add(new Item(BillTable.date_end,Item.item_type_long));
+//        items.add(new Item(BillTable.src_img,Item.item_type_text));
+//        items.add(new Item(BillTable.sale_ids,Item.item_type_text));
+//        items.add(new Item(BillTable.src_audio,Item.item_type_text));
+//        return items;
+//    }
 
 
     public void findPersonByKeyWord(final String key, final OnFindPerson onFindPerson)
     {
 
         ArrayList<Person> persons = new ArrayList<>();
-        Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_PERSON_NAME).mhSerach(DataManager.name,Person.strings1,key);
+        Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_PERSON_NAME).mhSerach(PersonTable.name,Person.strings1,key);
         if(cursor == null)
         {
             l.l("findPersonByKeyWord  cursor == null");
@@ -406,18 +423,18 @@ public class DataManager {
     public void findBillByKeyWord(String key,OnFindBill onFindBill)
     {
 //        Cursor cursor_wait = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME)
-//                .mhSerachBetweenAB_int_state(Info.date_start,startDate.getTime(),endDate.getTime(),Info.bill_strings,key,Info.state,Info.STATE_WAIT);
+//                .mhSerachBetweenAB_int_state(BillInfo.date_start,startDate.getTime(),endDate.getTime(),BillInfo.bill_strings,key,BillInfo.state,BillInfo.STATE_WAIT);
 //        infos_wait = ConvertToWaitList(cursor_wait);
 //        initPerson(infos_wait);
 //
 //        Cursor cursor_ing = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME)
-//                .mhSerachBetweenAB_int_state(Info.date_start,startDate.getTime(),endDate.getTime(),Info.bill_strings,key,Info.state,Info.STATE_ING);
+//                .mhSerachBetweenAB_int_state(BillInfo.date_start,startDate.getTime(),endDate.getTime(),BillInfo.bill_strings,key,BillInfo.state,BillInfo.STATE_ING);
 //        infos_ing = ConvertToIngList(cursor_ing);
 //        initPerson(infos_ing);
 //
 //
 //        Cursor cursor_over = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME)
-//                .mhSerachBetweenAB_int_state(Info.date_start,startDate.getTime(),endDate.getTime(),Info.bill_strings,key,Info.state,Info.STATE_OVER);
+//                .mhSerachBetweenAB_int_state(BillInfo.date_start,startDate.getTime(),endDate.getTime(),BillInfo.bill_strings,key,BillInfo.state,BillInfo.STATE_OVER);
 //        infos_over = ConvertToOverList(cursor_over);
 //        initPerson(infos_over);
 
@@ -441,22 +458,22 @@ public class DataManager {
         for(int i = 0;i<size_person;i++)
         {
             String name_id = cursor_person.getString(cursor_person.getColumnIndex("_id"));
-            Cursor cursor_bill =  SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME).serachWithDate_Bill(Info.name_id,Info.bill_strings,name_id,startDate.getTime(),endDate.getTime());
+            Cursor cursor_bill =  SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME).serachWithDate_Bill(BillTable.name_id,BillTable.bill_strings,name_id,startDate.getTime(),endDate.getTime());
             cursor_bill.moveToFirst();
             int size_bill = cursor_bill.getCount();
             for(int k = 0;k<size_bill;k++)
             {
-                String state = cursor_bill.getString(cursor_bill.getColumnIndex(Info.state));
+                String state = cursor_bill.getString(cursor_bill.getColumnIndex(BillTable.state));
 
-                if(state.equalsIgnoreCase(Info.STATE_WAIT))
+                if(state.equalsIgnoreCase(BillInfo.STATE_WAIT))
                 {
-                    infos_wait.add(new InfoWait(cursor_bill));
-                }else if(state.equalsIgnoreCase(Info.STATE_ING))
+                    infos_wait.add(new BillInfoWait(cursor_bill));
+                }else if(state.equalsIgnoreCase(BillInfo.STATE_ING))
                 {
-                    infos_ing.add(new InfoIng(cursor_bill));
-                }else if(state.equalsIgnoreCase(Info.STATE_OVER))
+                    infos_ing.add(new BillInfoIng(cursor_bill));
+                }else if(state.equalsIgnoreCase(BillInfo.STATE_OVER))
                 {
-                    infos_over.add(new InfoOver(cursor_bill));
+                    infos_over.add(new BillInfoOver(cursor_bill));
                 }
                 cursor_bill.moveToNext();
             }
@@ -468,22 +485,22 @@ public class DataManager {
         /**
          * find in bill
          */
-        Cursor cursor_bill = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME).serachBillByAnyKeyWithDate_Bill(Info.bill_strings,key,startDate.getTime(),endDate.getTime());
+        Cursor cursor_bill = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME).serachBillByAnyKeyWithDate_Bill(BillTable.bill_strings,key,startDate.getTime(),endDate.getTime());
         cursor_bill.moveToFirst();
         int size_bill = cursor_bill.getCount();
         for(int i = 0;i<size_bill;i++)
         {
-            String state = cursor_bill.getString(cursor_bill.getColumnIndex(Info.state));
+            String state = cursor_bill.getString(cursor_bill.getColumnIndex(BillTable.state));
 
-            if(state.equalsIgnoreCase(Info.STATE_WAIT))
+            if(state.equalsIgnoreCase(BillInfo.STATE_WAIT))
             {
-                infos_wait.add(new InfoWait(cursor_bill));
-            }else if(state.equalsIgnoreCase(Info.STATE_ING))
+                infos_wait.add(new BillInfoWait(cursor_bill));
+            }else if(state.equalsIgnoreCase(BillInfo.STATE_ING))
             {
-                infos_ing.add(new InfoIng(cursor_bill));
-            }else if(state.equalsIgnoreCase(Info.STATE_OVER))
+                infos_ing.add(new BillInfoIng(cursor_bill));
+            }else if(state.equalsIgnoreCase(BillInfo.STATE_OVER))
             {
-                infos_over.add(new InfoOver(cursor_bill));
+                infos_over.add(new BillInfoOver(cursor_bill));
             }
             cursor_bill.moveToNext();
         }

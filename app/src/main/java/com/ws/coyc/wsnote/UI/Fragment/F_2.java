@@ -14,11 +14,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 
+import com.ws.coyc.wsnote.Data.BillInfoIng;
 import com.ws.coyc.wsnote.Data.DataManager;
-import com.ws.coyc.wsnote.Data.InfoIng;
 import com.ws.coyc.wsnote.R;
 import com.ws.coyc.wsnote.UI.Adapter.Info2Adapter;
 import com.ws.coyc.wsnote.UI.Adapter.ListPosition;
@@ -42,7 +41,7 @@ public class F_2 extends Fragment {
     private ListView mList;
     private ImageView mIv_bc;
     public static Info2Adapter mAdapter;
-    public  ArrayList<InfoIng> infos = new ArrayList<>();
+    public  ArrayList<BillInfoIng> infos = new ArrayList<>();
     public static Context mContext;
     private Button mBt_add;
 
@@ -170,7 +169,7 @@ public class F_2 extends Fragment {
     private void preToF3(final int position) {
         boolean fk ;
         boolean fh;
-        if(infos.get(position).fh_state.equals(InfoIng.FH_STATE_TRUE))
+        if(infos.get(position).fh_state.equals(BillInfoIng.FH_STATE_TRUE))
         {
             fh = true;
         }else
@@ -178,7 +177,7 @@ public class F_2 extends Fragment {
             fh = false;
         }
 
-        if(infos.get(position).fk_state.equals(InfoIng.FK_STATE_TRUE))
+        if(infos.get(position).fk_state.equals(BillInfoIng.FK_STATE_TRUE))
         {
             fk = true;
         }else
@@ -197,17 +196,17 @@ public class F_2 extends Fragment {
                 infos.get(position).all_in_money = Integer.parseInt(prise_in);
                 if(isfh)
                 {
-                    infos.get(position).fh_state = InfoIng.FH_STATE_TRUE;
+                    infos.get(position).fh_state = BillInfoIng.FH_STATE_TRUE;
                 }else
                 {
-                    infos.get(position).fh_state = InfoIng.FH_STATE_FALSE;
+                    infos.get(position).fh_state = BillInfoIng.FH_STATE_FALSE;
                 }
                 if(isfk)
                 {
-                    infos.get(position).fk_state = InfoIng.FK_STATE_TRUE;
+                    infos.get(position).fk_state = BillInfoIng.FK_STATE_TRUE;
                 }else
                 {
-                    infos.get(position).fk_state = InfoIng.FK_STATE_FALSE;
+                    infos.get(position).fk_state = BillInfoIng.FK_STATE_FALSE;
                 }
 
                 mAdapter.notifyDataSetChanged();
@@ -261,7 +260,7 @@ public class F_2 extends Fragment {
     };
 
     public static void addOneInfoDataIn2(String name, String text, String prise, boolean isFH, boolean isFK,String phone,String address,String path) {
-        InfoIng info2 = new InfoIng();
+        BillInfoIng info2 = new BillInfoIng();
         info2.person.name = name;
         info2.goods = text;
 
@@ -272,18 +271,18 @@ public class F_2 extends Fragment {
         info2.all_in_money = Integer.parseInt(prise);
         if(isFH)
         {
-            info2.fh_state = InfoIng.FH_STATE_TRUE;
+            info2.fh_state = BillInfoIng.FH_STATE_TRUE;
         }else
         {
-            info2.fh_state = InfoIng.FH_STATE_FALSE;
+            info2.fh_state = BillInfoIng.FH_STATE_FALSE;
         }
 
         if(isFK)
         {
-            info2.fk_state = InfoIng.FK_STATE_TRUE;
+            info2.fk_state = BillInfoIng.FK_STATE_TRUE;
         }else
         {
-            info2.fk_state = InfoIng.FK_STATE_FALSE;
+            info2.fk_state = BillInfoIng.FK_STATE_FALSE;
         }
         DataManager.getInstance().addIngInfoAnyWay(info2);
         mAdapter.notifyDataSetChanged();

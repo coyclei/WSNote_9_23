@@ -2,7 +2,6 @@ package com.ws.coyc.wsnote.SQLiteHelper;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
@@ -25,6 +24,11 @@ public class Table {
     public String keyItem;
 
     //db
+
+    public Table()
+    {
+
+    }
 
     public Table(String table_name,String keyItem)
     {
@@ -138,10 +142,6 @@ public class Table {
     {
         return SQLiteManager.getInstance().db.query(table_name, coms," all_info LIKE ? or state_fh LIKE ? or state_fk LIKE ? and dateStart < "+start+" and dateStart > "+end,new String[] { "%" + content + "%","%" + content + "%","%" + content + "%" }, null, null, null);
     }
-
-
-
-
 
     public Cursor mhSerach(String item,String content,String lim)
     {

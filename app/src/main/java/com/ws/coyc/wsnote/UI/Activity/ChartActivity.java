@@ -19,8 +19,8 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
+import com.ws.coyc.wsnote.Data.BillInfoOver;
 import com.ws.coyc.wsnote.Data.DataManager;
-import com.ws.coyc.wsnote.Data.InfoOver;
 import com.ws.coyc.wsnote.R;
 import com.ws.coyc.wsnote.SQLiteHelper.Utils.l;
 import com.ws.coyc.wsnote.Utils.DateUtils;
@@ -62,7 +62,7 @@ public class ChartActivity extends AppCompatActivity {
     private TextView tv_arv_count_get;
     private TextView pre_get_and_out;
 
-    private ArrayList<InfoOver> infoOvers ;
+    private ArrayList<BillInfoOver> infoOvers ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

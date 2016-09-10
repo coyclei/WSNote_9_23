@@ -1,5 +1,4 @@
 package com.ws.coyc.wsnote.UI.Fragment;
-import android.app.FragmentManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Message;
@@ -11,18 +10,15 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 
 import com.ws.coyc.wsnote.Data.DataManager;
-import com.ws.coyc.wsnote.Data.InfoWait;
+import com.ws.coyc.wsnote.Data.BillInfoWait;
 import com.ws.coyc.wsnote.R;
 import com.ws.coyc.wsnote.SQLiteHelper.Utils.l;
 import com.ws.coyc.wsnote.UI.Activity.MainActivity;
 import com.ws.coyc.wsnote.UI.Adapter.Info1Adapter;
-import com.ws.coyc.wsnote.UI.Adapter.Info3Adapter;
 import com.ws.coyc.wsnote.UI.Adapter.ListPosition;
-import com.ws.coyc.wsnote.UI.DialogFragment.Dialog_addWait;
 import com.ws.coyc.wsnote.UI.PopUp.SetTextPopup.OnDescribeInterface;
 import com.ws.coyc.wsnote.UI.PopUp.SetTextPopup.OnDescribeInterface2;
 import com.ws.coyc.wsnote.UI.PopUp.SetTextPopup.OnDescribeInterface3;
@@ -42,7 +38,7 @@ public class F_1 extends Fragment {
     private View mView;
     private ListView mList;
     private Info1Adapter mAdapter;
-    public  ArrayList<InfoWait> infos ;
+    public  ArrayList<BillInfoWait> infos ;
 
     private Button mBt_add;
     private Button mBt_delete;
@@ -171,7 +167,7 @@ public class F_1 extends Fragment {
     }
 
     private void addOneWaitInfo(String name, String text, String phone, String address, String image_path) {
-        InfoWait info = new InfoWait();
+        BillInfoWait info = new BillInfoWait();
         info.dateStart = new Date();
         info.person.name = name;
         info.goods = text;

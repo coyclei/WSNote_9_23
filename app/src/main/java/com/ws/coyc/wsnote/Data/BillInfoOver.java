@@ -3,14 +3,14 @@ package com.ws.coyc.wsnote.Data;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
+
+import com.ws.coyc.wsnote.Data.Table.BillTable;
 import com.ws.coyc.wsnote.SQLiteHelper.Utils.l;
-import com.ws.coyc.wsnote.Utils.DateUtils;
-import java.util.Date;
 
 /**
  * Created by leipe on 2016/8/19.
  */
-public class InfoOver extends Info{
+public class BillInfoOver extends BillInfo {
 
 //    public Date end_date= new Date();
     public int all_in_money = 0;
@@ -18,19 +18,19 @@ public class InfoOver extends Info{
 
     public static String [] strings;
 
-    public InfoOver()
+    public BillInfoOver()
     {
         initStrings();
     }
 
-    public InfoOver(Person person, String goods)
+    public BillInfoOver(Person person, String goods)
     {
         initStrings();
         this.person = person;
         this.goods = goods;
     }
 
-    public InfoOver(Cursor cursor)
+    public BillInfoOver(Cursor cursor)
     {
         initStrings();
         initInfoOverInSQL(cursor);
@@ -40,13 +40,13 @@ public class InfoOver extends Info{
     {
         strings = new String[8];
         strings[0] = "_id";
-        strings[1] = name_id;
-        strings[2] = all_info;
-        strings[3] = date_start;
-        strings[4] = all_in;
-        strings[5] = all_out;
+        strings[1] = BillTable.name_id;
+        strings[2] = BillTable.all_info;
+        strings[3] = BillTable.date_start;
+        strings[4] = BillTable.all_in;
+        strings[5] = BillTable.all_out;
 //        strings[6] = date_end;
-        strings[7] = src_img;
+        strings[7] = BillTable.src_img;
     }
 
 
@@ -54,8 +54,8 @@ public class InfoOver extends Info{
     private void initInfoOverInSQL(Cursor cursor) {
         initBaseInfoInSQL(cursor);
 //        this.end_date = new Date(cursor.getLong(cursor.getColumnIndex(date_end)));
-        this.all_in_money = cursor.getInt(cursor.getColumnIndex(all_in));
-        this.all_out_money = cursor.getInt(cursor.getColumnIndex(all_out));
+        this.all_in_money = cursor.getInt(cursor.getColumnIndex(BillTable.all_in));
+        this.all_out_money = cursor.getInt(cursor.getColumnIndex(BillTable.all_out));
     }
 
 
@@ -78,7 +78,7 @@ public class InfoOver extends Info{
         contentValues.put("dateStart", dateStart.getTime());
         contentValues.put("date_end","");
         contentValues.put("src_img",image_url);
-        contentValues.put("src_video","");
+        contentValues.put("sale_ids","");
         contentValues.put("src_audio","");
         return contentValues;
     }

@@ -3,29 +3,30 @@ package com.ws.coyc.wsnote.Data;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
+
+import com.ws.coyc.wsnote.Data.Table.BillTable;
 import com.ws.coyc.wsnote.SQLiteHelper.Utils.l;
-import com.ws.coyc.wsnote.Utils.DateUtils;
 
 /**
  * Created by leipe on 2016/8/19.
  */
-public class InfoWait extends Info {
+public class BillInfoWait extends BillInfo {
 
     public static String [] strings;
 
-    public InfoWait()
+    public BillInfoWait()
     {
         initString();
     }
 
-    public InfoWait(Person person, String goods)
+    public BillInfoWait(Person person, String goods)
     {
         initString();
         this.person = person;
         this.goods = goods;
     }
 
-    public InfoWait(Cursor cursor)
+    public BillInfoWait(Cursor cursor)
     {
         initString();
         initInfoWaitInSQL(cursor);
@@ -35,10 +36,10 @@ public class InfoWait extends Info {
     {
         strings = new String[5];
         strings[0] = "_id";
-        strings[1] = name_id;
-        strings[2] = all_info;
-        strings[3] = date_start;
-        strings[4] = src_img;
+        strings[1] = BillTable.name_id;
+        strings[2] = BillTable.all_info;
+        strings[3] = BillTable.date_start;
+        strings[4] = BillTable.src_img;
     }
 
     @NonNull
@@ -65,7 +66,7 @@ public class InfoWait extends Info {
         contentValues.put("date_end","");
         l.l("image_url....................."+image_url);
         contentValues.put("src_img", image_url);
-        contentValues.put("src_video", "");
+        contentValues.put("sale_ids", "");
         contentValues.put("src_audio", "");
         contentValues.put("date_end", "");
         return contentValues;

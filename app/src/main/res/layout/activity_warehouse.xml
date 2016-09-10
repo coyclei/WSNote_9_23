@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_person"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    >
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="我的changku"
+        android:background="@android:color/holo_red_light"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="20dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        />
+    <ImageButton
+        android:id="@+id/ib_more"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@mipmap/map"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        />
+    <ImageButton
+        android:id="@+id/ib_chart"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@mipmap/chart"
+        android:layout_toLeftOf="@id/ib_more"
+        android:layout_margin="5dp"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        />
+    <ImageButton
+        android:id="@+id/ib_add"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@mipmap/add"
+        android:layout_margin="5dp"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        android:layout_toLeftOf="@id/ib_chart"
+        />
+    <ImageButton
+        android:id="@+id/ib_serach"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@mipmap/serach"
+        android:layout_margin="5dp"
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        android:layout_toLeftOf="@id/ib_add"
+        />
+
+    <ListView
+        android:id="@+id/lv_list"
+        android:layout_below="@id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    </ListView>
+
+</RelativeLayout>

@@ -1,14 +1,10 @@
 package com.ws.coyc.wsnote.SQLiteHelper;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-
 import com.ws.coyc.wsnote.SQLiteHelper.Utils.l;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,7 +12,7 @@ import java.util.ArrayList;
 /**
  * Created by coyc on 16-8-23.
  * before use the SDK you should do SQLiteManager.init();
- * then you can create table by SQLiteManaget.crateTable();
+ * then you can create table by SQLiteManager.crateTable();
  */
 
 public class SQLiteManager {
@@ -38,6 +34,7 @@ public class SQLiteManager {
         @Override
         public void onCreate(SQLiteDatabase _db) {
             int size = tables.size();
+            l.l("SQL onCreate ");
             for(int i = 0;i<size;i++)
             {
                 String sql = getTableCreateSQLString(tables.get(i));
@@ -48,12 +45,17 @@ public class SQLiteManager {
 
         @Override
         public void onUpgrade(SQLiteDatabase _db, int _oldVersion,int _newVersion) {
+            l.l("SQL onUpgrade ............ ");
             int size = tables.size();
             for(int i = 0;i<size;i++)
             {
-                _db.execSQL("DROP TABLE IF EXISTS " + getTableCreateSQLString(tables.get(i)));
+//                _db.execSQL("DROP TABLE IF EXISTS " + getTableCreateSQLString(tables.get(i)));
+                String sql = getTableCreateSQLString(tables.get(i));
+                l.l("SQL onUpgrade "+sql);
+                _db.execSQL(sql);
             }
-            onCreate(_db);
+//            onCreate(_db);
+
         }// end for private static class DBOpenHelper extends SQLiteOpenHelper
     }
 
@@ -61,7 +63,7 @@ public class SQLiteManager {
     private String DB_NAME;
 
     // DB_version
-    private int DB_VERSION = 1;
+    private int DB_VERSION = 2;
 
     //ArrayList <Table>
     private ArrayList<Table> tables = new ArrayList<>();
@@ -100,11 +102,17 @@ public class SQLiteManager {
         return instance;
     }
 
+    public void updateTable()
+    {
+        dbOpenHelper.onUpgrade(db,DB_VERSION,DB_VERSION);
+    }
+
 
     //open
     public void open() {
 
         dbOpenHelper = new DBOpenHelper(context, DB_NAME, null, DB_VERSION);
+
         try {
             db = dbOpenHelper.getWritableDatabase();
         } catch (SQLiteException ex) {
@@ -158,6 +166,10 @@ public class SQLiteManager {
 
         tables.add(table);
     }
+    public void registerTable(Table table)
+    {
+        tables.add(table);
+    }
 
     // get table create sql by items
     private static String getTableCreateSQLString(Table table) {
@@ -190,7 +202,6 @@ public class SQLiteManager {
         }
         sql += ");";
         l.l("getTableCreateSQLString"+sql);
-        Log.i("coyc","getTableCreateSQLString"+sql);
         return sql;
     }
 

@@ -1,23 +1,15 @@
 package com.ws.coyc.wsnote.UI.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.ws.coyc.wsnote.Data.InfoOver;
 import com.ws.coyc.wsnote.Data.Person;
 import com.ws.coyc.wsnote.R;
-import com.ws.coyc.wsnote.UI.Activity.ImageViewActivity;
-import com.ws.coyc.wsnote.UI.Layout.CircleImageView;
-import com.ws.coyc.wsnote.Utils.DateUtils;
-import com.ws.coyc.wsnote.Utils.ImageLoader;
 import com.ws.coyc.wsnote.Utils.MyColor;
-import com.ws.coyc.wsnote.Utils.SDFile;
 
 import java.util.ArrayList;
 

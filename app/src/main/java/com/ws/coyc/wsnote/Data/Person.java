@@ -3,6 +3,7 @@ package com.ws.coyc.wsnote.Data;
 import android.content.ContentValues;
 import android.database.Cursor;
 
+import com.ws.coyc.wsnote.Data.Table.PersonTable;
 import com.ws.coyc.wsnote.SQLiteHelper.SQLiteManager;
 import com.ws.coyc.wsnote.SQLiteHelper.Utils.l;
 
@@ -24,20 +25,21 @@ public class Person {
     public int all_prise_in = 0;
     public int all_prise_out = 0;
 
-    public static String[] strings1 = {"_id",DataManager.name,DataManager.address1,DataManager.address2,DataManager.phone};
+    public static String[] strings1 = {"_id", PersonTable.name,PersonTable.address1,PersonTable.address2,PersonTable.phone};
 
 
     public Person()
     {
+
     }
 
     public Person(Cursor cursor)
     {
         this.id = cursor.getInt(cursor.getColumnIndex("_id"));
-        this.address1 = cursor.getString(cursor.getColumnIndex(DataManager.address1));
-        this.address2 = cursor.getString(cursor.getColumnIndex(DataManager.address2));
-        this.name = cursor.getString(cursor.getColumnIndex(DataManager.name));
-        this.phone = cursor.getString(cursor.getColumnIndex(DataManager.phone));
+        this.address1 = cursor.getString(cursor.getColumnIndex(PersonTable.address1));
+        this.address2 = cursor.getString(cursor.getColumnIndex(PersonTable.address2));
+        this.name = cursor.getString(cursor.getColumnIndex(PersonTable.name));
+        this.phone = cursor.getString(cursor.getColumnIndex(PersonTable.phone));
         l.l("********************************************person");
         l.l("address1"+address1);
         l.l("address2"+address2);
@@ -48,10 +50,10 @@ public class Person {
 
     public static void initPersonInSQL(Person person,Cursor cursor)
     {
-        person.address1 = cursor.getString(cursor.getColumnIndex(DataManager.address1));
-        person.address2 = cursor.getString(cursor.getColumnIndex(DataManager.address2));
-        person.name = cursor.getString(cursor.getColumnIndex(DataManager.name));
-        person.phone = cursor.getString(cursor.getColumnIndex(DataManager.phone));
+        person.address1 = cursor.getString(cursor.getColumnIndex(PersonTable.address1));
+        person.address2 = cursor.getString(cursor.getColumnIndex(PersonTable.address2));
+        person.name = cursor.getString(cursor.getColumnIndex(PersonTable.name));
+        person.phone = cursor.getString(cursor.getColumnIndex(PersonTable.phone));
     }
 
 
@@ -64,7 +66,7 @@ public class Person {
     public void insertNoSameName() {
 
         //check the name is exist. if is exist do update else insert
-        Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_PERSON_NAME).serach(DataManager.name,name);
+        Cursor cursor = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_PERSON_NAME).serach(PersonTable.name,name);
         if(cursor.getCount() <= 0)
         {
             insertAnyway();

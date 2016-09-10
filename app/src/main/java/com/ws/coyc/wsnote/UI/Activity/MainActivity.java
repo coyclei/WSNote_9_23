@@ -74,8 +74,8 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        l.l("qqqqqqqqqqqqqqqqqqqqqqqqqqqq");
-//        Toast.makeText(getBaseContext(),"9111",Toast.LENGTH_SHORT).show();
+        l.l("2233");
+        Toast.makeText(getBaseContext(),"qqaaaqqqq",Toast.LENGTH_SHORT).show();
 
 
 

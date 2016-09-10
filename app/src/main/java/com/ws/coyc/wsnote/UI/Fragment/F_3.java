@@ -19,9 +19,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import com.ws.coyc.wsnote.Data.BillInfoOver;
 import com.ws.coyc.wsnote.Data.DataManager;
-import com.ws.coyc.wsnote.Data.InfoOver;
+import com.ws.coyc.wsnote.Data.Goods;
 import com.ws.coyc.wsnote.R;
+import com.ws.coyc.wsnote.SQLiteHelper.Utils.l;
 import com.ws.coyc.wsnote.UI.Activity.ChartActivity;
 import com.ws.coyc.wsnote.UI.Adapter.Info3Adapter;
 import com.ws.coyc.wsnote.UI.Adapter.ListPosition;
@@ -47,7 +49,7 @@ public class F_3 extends Fragment {
     private ImageView mIv_bc;
     public static Info3Adapter mAdapter;
     public static Context mContext;
-    public  ArrayList<InfoOver> infos = new ArrayList<>();
+    public  ArrayList<BillInfoOver> infos = new ArrayList<>();
     private Button mBt_add;
 
     private LinearLayout more;
@@ -136,6 +138,10 @@ public class F_3 extends Fragment {
             @Override
             public void onClick(View view) {
                 add();
+
+                Goods goods = new Goods("sp1","is good for sleep",100,200);
+                int re = (int)DataManager.getInstance().goodsTable.insert(goods.getContentValues());
+                l.l("add one goods : "+re+"");
             }
         });
 
@@ -273,7 +279,7 @@ public class F_3 extends Fragment {
     };
 
     public void addInfoDataIn3(String name, String text, String prise_in, String prise_out,String phone,String address,String path) {
-        InfoOver info3 = new InfoOver();
+        BillInfoOver info3 = new BillInfoOver();
         info3.dateStart = new Date();
 //        info3.end_date = new Date();
         info3.all_out_money = Integer.parseInt(prise_out);

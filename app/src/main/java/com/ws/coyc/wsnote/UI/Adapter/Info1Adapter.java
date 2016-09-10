@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.ws.coyc.wsnote.Data.InfoWait;
+import com.ws.coyc.wsnote.Data.BillInfoWait;
 import com.ws.coyc.wsnote.R;
 import com.ws.coyc.wsnote.SQLiteHelper.Utils.l;
 import com.ws.coyc.wsnote.UI.Activity.ImageViewActivity;
@@ -33,13 +33,13 @@ import java.util.ArrayList;
  */
 public class Info1Adapter extends BaseAdapter {
 
-    public ArrayList<InfoWait> info = new ArrayList<InfoWait>();
+    public ArrayList<BillInfoWait> info = new ArrayList<BillInfoWait>();
     private LayoutInflater inflater;
     private Context mContext;
     private ListPosition position;
 
 
-    public Info1Adapter(ArrayList<InfoWait> ps , Context c,ListPosition p)
+    public Info1Adapter(ArrayList<BillInfoWait> ps , Context c, ListPosition p)
     {
         info = ps;
         mContext = c;
@@ -84,7 +84,7 @@ public class Info1Adapter extends BaseAdapter {
         }
 
         int id = info.size()-position;
-        InfoWait infoWait = info.get(position);
+        BillInfoWait infoWait = info.get(position);
 
         holder.id.setText(id+"");
         holder.name.setText(infoWait.person.name);

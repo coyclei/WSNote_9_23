@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.ws.coyc.wsnote.Data.InfoOver;
+import com.ws.coyc.wsnote.Data.BillInfoOver;
 import com.ws.coyc.wsnote.R;
 import com.ws.coyc.wsnote.UI.Activity.ImageViewActivity;
 import com.ws.coyc.wsnote.UI.Layout.CircleImageView;
@@ -32,12 +32,12 @@ import java.util.ArrayList;
  */
 public class Info3Adapter extends BaseAdapter {
 
-    public ArrayList<InfoOver> info = new ArrayList<InfoOver>();
+    public ArrayList<BillInfoOver> info = new ArrayList<BillInfoOver>();
     private LayoutInflater inflater;
     private Context mContext;
     private ListPosition position;
 
-    public Info3Adapter(ArrayList<InfoOver> ps , Context c,ListPosition p)
+    public Info3Adapter(ArrayList<BillInfoOver> ps , Context c, ListPosition p)
     {
         info = ps;
         mContext = c;
@@ -77,7 +77,7 @@ public class Info3Adapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         int id = info.size()-position;
-        InfoOver infoOver = info.get(position);
+        BillInfoOver infoOver = info.get(position);
         
         
         holder.id.setText(id+"");

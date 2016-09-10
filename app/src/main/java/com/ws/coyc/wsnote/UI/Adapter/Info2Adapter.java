@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.ws.coyc.wsnote.Data.InfoIng;
+import com.ws.coyc.wsnote.Data.BillInfoIng;
 import com.ws.coyc.wsnote.R;
 import com.ws.coyc.wsnote.UI.Activity.ImageViewActivity;
 import com.ws.coyc.wsnote.UI.Layout.CircleImageView;
@@ -32,11 +32,11 @@ import java.util.ArrayList;
  */
 public class Info2Adapter extends BaseAdapter {
 
-    public ArrayList<InfoIng> info = new ArrayList<InfoIng>();
+    public ArrayList<BillInfoIng> info = new ArrayList<BillInfoIng>();
     private LayoutInflater inflater;
     private Context mContext;
     private ListPosition position;
-    public Info2Adapter(ArrayList<InfoIng> ps , Context c,ListPosition p)
+    public Info2Adapter(ArrayList<BillInfoIng> ps , Context c, ListPosition p)
     {
         info = ps;
         mContext = c;
@@ -79,7 +79,7 @@ public class Info2Adapter extends BaseAdapter {
         int id = info.size()-position;
 
         holder.id.setText(id+"");
-        InfoIng infoIng = info.get(position);
+        BillInfoIng infoIng = info.get(position);
 
         holder.name.setText(infoIng.person.name);
         holder.goods.setText(infoIng.goods);
@@ -125,14 +125,14 @@ public class Info2Adapter extends BaseAdapter {
         }
         
         
-        if(infoIng.fh_state.equals(InfoIng.FH_STATE_TRUE))
+        if(infoIng.fh_state.equals(BillInfoIng.FH_STATE_TRUE))
         {
             holder.fh_state.setTextColor(Color.WHITE);
         }else
         {
             holder.fh_state.setTextColor(MyColor.red_5);
         }
-        if(infoIng.fk_state.equals(InfoIng.FK_STATE_TRUE))
+        if(infoIng.fk_state.equals(BillInfoIng.FK_STATE_TRUE))
         {
             holder.fk_state.setTextColor(Color.WHITE);
         }else
