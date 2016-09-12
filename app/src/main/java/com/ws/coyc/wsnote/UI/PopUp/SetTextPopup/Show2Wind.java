@@ -2,21 +2,13 @@ package com.ws.coyc.wsnote.UI.PopUp.SetTextPopup;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.ws.coyc.wsnote.R;
 import com.ws.coyc.wsnote.Utils.Calc;
@@ -78,7 +70,7 @@ public class Show2Wind extends PopUpWindFather{
 	public void initView()
 	{
 		super.initView();
-		mText_prise = (EditText) v.findViewById(R.id.tv_text_prise);
+		mText_prise = (EditText) v.findViewById(R.id.tv_text_money_in);
 		mText_prise.setText(prise_in);
 
 		isFH = (CheckBox) v.findViewById(R.id.cb_fh);

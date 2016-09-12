@@ -36,32 +36,32 @@
         android:src="@mipmap/add"
         />
     <EditText
-        android:id="@+id/tv_goods"
+        android:id="@+id/tv_goods_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
         android:layout_below="@+id/tv_name"
-        android:layout_above="@+id/tv_text_prise"
+        android:layout_above="@+id/tv_text_money_in"
         android:hint="商品描述"
         style="@style/edit_text"
         android:layout_toRightOf="@+id/iv_info"
         />
 
     <EditText
-        android:id="@+id/tv_text_prise"
+        android:id="@+id/tv_text_money_in"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/tv_phone"
+        android:layout_above="@+id/tv_info"
         android:hint="进货价"
         style="@style/edit_text_input_num_count"
         android:layout_toRightOf="@+id/iv_money_in"
         />
 
     <EditText
-        android:id="@+id/tv_text_prise_out"
+        android:id="@+id/tv_text_money_out"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/tv_phone"
+        android:layout_above="@+id/tv_info"
         android:layout_alignParentRight="true"
         android:hint="出货价"
 
@@ -72,9 +72,9 @@
 
 
 
-    <!--phone-->
+    <!--info-->
     <EditText
-        android:id="@+id/tv_phone"
+        android:id="@+id/tv_info"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_above="@+id/tv_address"
@@ -149,27 +149,27 @@
         android:id="@+id/iv_money_in"
         style="@style/image_view_edit"
         android:src="@mipmap/in"
-        android:layout_below="@id/tv_goods"
+        android:layout_below="@id/tv_goods_info"
         />
     <ImageView
         android:id="@+id/iv_money_out"
         style="@style/image_view_edit_money_out"
         android:src="@mipmap/out"
-        android:layout_below="@id/tv_goods"
-        android:layout_toLeftOf="@id/tv_text_prise_out"
+        android:layout_below="@id/tv_goods_info"
+        android:layout_toLeftOf="@id/tv_text_money_out"
         />
 
     <ImageView
         android:id="@+id/iv_phone"
         style="@style/image_view_edit"
         android:src="@mipmap/phone"
-        android:layout_below="@id/tv_text_prise"
+        android:layout_below="@id/tv_text_money_in"
         />
     <ImageView
         android:id="@+id/iv_address"
         style="@style/image_view_edit"
         android:src="@mipmap/address"
-        android:layout_below="@id/tv_phone"
+        android:layout_below="@id/tv_info"
         />
 
 </RelativeLayout>

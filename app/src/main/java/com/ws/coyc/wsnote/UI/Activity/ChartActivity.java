@@ -72,7 +72,7 @@ public class ChartActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        tv_count = (TextView) findViewById(R.id.tv_count);
+        tv_count = (TextView) findViewById(R.id.tv_info);
         tv_all_out = (TextView) findViewById(R.id.tv_all_out);
         tv_all_get = (TextView) findViewById(R.id.tv_all_get);
         tv_arv_day_get = (TextView) findViewById(R.id.tv_arv_day_get);

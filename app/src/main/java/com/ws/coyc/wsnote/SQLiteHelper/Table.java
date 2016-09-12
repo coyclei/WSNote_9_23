@@ -122,15 +122,15 @@ public class Table {
     {
 
         return SQLiteManager.getInstance().db.query(table_name, coms,item+"  LIKE ? ",new String[] { "%" + content + "%" }, null, null, null);
-//        return SQLiteManager.getInstance().db.query(table_name, coms," phone = 18274833970 and "+ item+"  LIKE ? ",new String[] { "%" + content + "%" }, null, null, null);
-//        return SQLiteManager.getInstance().db.query(table_name, coms," phone =? and "+ item+"  LIKE ? ",new String[] { "%" + content + "%" }, null, null, null);
-//        return SQLiteManager.getInstance().db.query(table_name, coms," phone LIKE ? or address1 LIKE ? or "+item+"  LIKE ? ",new String[] { "%" + content + "%","%" + content + "%","%" + content + "%" }, null, null, null);
+//        return SQLiteManager.getInstance().db.query(table_name, coms," info = 18274833970 and "+ item+"  LIKE ? ",new String[] { "%" + content + "%" }, null, null, null);
+//        return SQLiteManager.getInstance().db.query(table_name, coms," info =? and "+ item+"  LIKE ? ",new String[] { "%" + content + "%" }, null, null, null);
+//        return SQLiteManager.getInstance().db.query(table_name, coms," info LIKE ? or address1 LIKE ? or "+item+"  LIKE ? ",new String[] { "%" + content + "%","%" + content + "%","%" + content + "%" }, null, null, null);
     }
 
 
     public Cursor serachPersonByAnyKey(String[] coms,String content)
     {
-        return SQLiteManager.getInstance().db.query(table_name, coms," phone LIKE ? or address1 LIKE ? or name LIKE ? ",new String[] { "%" + content + "%","%" + content + "%","%" + content + "%" }, null, null, null);
+        return SQLiteManager.getInstance().db.query(table_name, coms," info LIKE ? or address1 LIKE ? or name LIKE ? ",new String[] { "%" + content + "%","%" + content + "%","%" + content + "%" }, null, null, null);
     }
 
     public Cursor serachBillByAnyKey_Bill(String[] coms,String content)

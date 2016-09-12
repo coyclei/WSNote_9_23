@@ -154,12 +154,12 @@ public class Info2Adapter extends BaseAdapter {
         holder.id = (TextView) convertView.findViewById(R.id.tv_id);
         holder.create_date = (TextView) convertView.findViewById(R.id.tv_date_create);
         holder.name = (TextView) convertView.findViewById(R.id.tv_name);
-        holder.goods = (TextView) convertView.findViewById(R.id.tv_goods);
+        holder.goods = (TextView) convertView.findViewById(R.id.tv_goods_info);
 
         holder.jh_moeny = (TextView) convertView.findViewById(R.id.tv_jh_money);
         holder.fh_state = (TextView) convertView.findViewById(R.id.tv_fh_state);
         holder.fk_state = (TextView) convertView.findViewById(R.id.tv_fk_state);
-        holder.phone = (TextView) convertView.findViewById(R.id.tv_phone);
+        holder.phone = (TextView) convertView.findViewById(R.id.tv_info);
         holder.address = (TextView) convertView.findViewById(R.id.tv_address);
         holder.image = (CircleImageView) convertView.findViewById(R.id.iv_image);
         holder.ib_phone = (ImageButton) convertView.findViewById(R.id.ib_phone);

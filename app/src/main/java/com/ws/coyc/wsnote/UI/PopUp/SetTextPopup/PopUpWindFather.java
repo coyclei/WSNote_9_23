@@ -4,10 +4,6 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -24,7 +20,6 @@ import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ws.coyc.wsnote.BrodCast.CameraBroadcastReceiver;
 import com.ws.coyc.wsnote.Data.DataManager;
 import com.ws.coyc.wsnote.Data.OnFindPerson;
 import com.ws.coyc.wsnote.Data.Person;
@@ -36,8 +31,6 @@ import com.ws.coyc.wsnote.UI.Adapter.PersonListAdapter;
 import com.ws.coyc.wsnote.Utils.ImageLoader;
 import com.ws.coyc.wsnote.Utils.SDFile;
 
-import java.io.File;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 
@@ -88,8 +81,8 @@ public class PopUpWindFather{
 	{
 		mTv_tille = (TextView) v.findViewById(R.id.tv_title);
 		mText_name = (EditText) v.findViewById(R.id.tv_name);
-		mText_goods = (EditText) v.findViewById(R.id.tv_goods);
-		mTv_phone = (EditText) v.findViewById(R.id.tv_phone);
+		mText_goods = (EditText) v.findViewById(R.id.tv_goods_info);
+		mTv_phone = (EditText) v.findViewById(R.id.tv_info);
 		mTv_address = (EditText) v.findViewById(R.id.tv_address);
 		mLv_list = (ListView) v.findViewById(R.id.lv_list);
 		mIm_image = (ImageView) v.findViewById(R.id.iv_image);
@@ -102,13 +95,11 @@ public class PopUpWindFather{
 				MainActivity.setOnGetImage(new OnGetImage() {
 					@Override
 					public void onGetImage(String path) {
-						l.l("popup getimage "+path);
 						image_path = path;
 						ImageLoader.getInstance().loadImage(path,mIm_image,5);
 					}
 				});
 				MainActivity.mHandler.sendEmptyMessage(MainActivity.To_CAMARE);
-
 				}
 		});
 
@@ -221,10 +212,8 @@ public class PopUpWindFather{
 	}
 
 	private void initImage() {
-		l.l("initImage....kkkkkkkkkk."+image_path);
 		if(SDFile.CheckFileExistsABS(image_path))
 		{
-			l.l("SDFile.CheckFileExistsABS(image_path)");
 			mIm_image.setVisibility(View.VISIBLE);
 			ImageLoader.getInstance().loadImage(image_path,mIm_image,5);
 		}

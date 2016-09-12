@@ -98,9 +98,9 @@ public class PersonInfoAdapter extends BaseAdapter {
 
         holder.name = (TextView) convertView.findViewById(R.id.tv_name);
         holder.count = (TextView) convertView.findViewById(R.id.tv_jh_money);
-        holder.all_prise = (TextView) convertView.findViewById(R.id.tv_ch_money);
-        holder.get_money = (TextView) convertView.findViewById(R.id.tv_get_money);
-        holder.phone = (TextView) convertView.findViewById(R.id.tv_phone);
+        holder.all_prise = (TextView) convertView.findViewById(R.id.tv_money_in);
+        holder.get_money = (TextView) convertView.findViewById(R.id.tv_money_out);
+        holder.phone = (TextView) convertView.findViewById(R.id.tv_info);
         holder.address = (TextView) convertView.findViewById(R.id.tv_address);
 
     }

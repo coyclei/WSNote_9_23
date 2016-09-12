@@ -2,19 +2,11 @@ package com.ws.coyc.wsnote.UI.PopUp.SetTextPopup;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ws.coyc.wsnote.R;
@@ -68,8 +60,8 @@ public class TextEditPopWind3 extends PopUpWindFather{
 	public void initView()
 	{
 		super.initView();
-		mText_in = (EditText) v.findViewById(R.id.tv_text_prise);
-		mText_out = (EditText) v.findViewById(R.id.tv_text_prise_out);
+		mText_in = (EditText) v.findViewById(R.id.tv_text_money_in);
+		mText_out = (EditText) v.findViewById(R.id.tv_text_money_out);
 
 		mText_in.setText(in_prise);
 

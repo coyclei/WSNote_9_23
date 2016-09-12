@@ -96,7 +96,7 @@ public class BillInfo {
         l.l("initBaseInfoInSQL dateStart "+dateStart);
         l.l("initBaseInfoInSQL person.id "+person.id);
         l.l("initBaseInfoInSQL goods "+goods);
-        l.l("initBaseInfoInSQL image_url "+image_url);
+        l.l("initBaseInfoInSQL image_path "+image_url);
     }
 
     public ContentValues getContentValues() {

@@ -35,7 +35,7 @@
             />
         <!--商品信息备注-->
         <TextView
-            android:id="@+id/tv_goods"
+            android:id="@+id/tv_goods_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_name"
@@ -52,13 +52,13 @@
             <!--android:text="888888"-->
             <!--android:textColor="@android:color/white"-->
             <!--android:textSize="16sp" />-->
-        <!--phone-->
+        <!--info-->
 
         <TextView
-            android:id="@+id/tv_phone"
+            android:id="@+id/tv_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_goods"
+            android:layout_below="@+id/tv_goods_info"
             android:text="phone:18274833970"
             android:layout_toLeftOf="@+id/iv_image"
             android:layout_toRightOf="@+id/ib_phone"
@@ -66,14 +66,14 @@
 
         <ImageButton
             android:id="@+id/ib_phone"
-            android:layout_below="@+id/tv_goods"
+            android:layout_below="@+id/tv_goods_info"
             android:src="@mipmap/phone"
             style="@style/image_button_phone"
             />
 
         <ImageButton
             android:id="@+id/ib_address"
-            android:layout_below="@+id/tv_phone"
+            android:layout_below="@+id/tv_info"
             android:src="@mipmap/map"
             style="@style/image_button_address"
             />
@@ -83,7 +83,7 @@
             android:id="@+id/tv_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_phone"
+            android:layout_below="@+id/tv_info"
             android:layout_toLeftOf="@+id/iv_image"
             android:layout_toRightOf="@+id/ib_address"
             style="@style/text_info" />
@@ -93,7 +93,7 @@
             style="@style/iv_image_goods"
 
             android:src="@mipmap/ic_launcher"
-            android:layout_below="@+id/tv_goods"
+            android:layout_below="@+id/tv_goods_info"
             />
 
         <!--more button-->

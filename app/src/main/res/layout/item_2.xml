@@ -38,7 +38,7 @@
             />
         <!--商品信息备注-->
         <TextView
-            android:id="@+id/tv_goods"
+            android:id="@+id/tv_goods_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_name"
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@+id/tv_goods"
+            android:layout_below="@+id/tv_goods_info"
             >
 
             <!--进货价-->
@@ -99,9 +99,9 @@
             <!--android:text="888888"-->
             <!--android:textColor="@android:color/white"-->
             <!--android:textSize="16sp" />-->
-        <!--phone-->
+        <!--info-->
         <TextView
-            android:id="@+id/tv_phone"
+            android:id="@+id/tv_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ll_b"
@@ -118,7 +118,7 @@
             android:id="@+id/tv_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_phone"
+            android:layout_below="@+id/tv_info"
             android:layout_toLeftOf="@+id/iv_image"
             style="@style/text_info"
             android:layout_toRightOf="@+id/ib_address"
@@ -133,7 +133,7 @@
 
         <ImageButton
             android:id="@+id/ib_address"
-            android:layout_below="@+id/tv_phone"
+            android:layout_below="@+id/tv_info"
             android:src="@mipmap/map"
             style="@style/image_button_address"
             />

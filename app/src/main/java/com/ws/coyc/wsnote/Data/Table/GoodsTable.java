@@ -1,10 +1,14 @@
 package com.ws.coyc.wsnote.Data.Table;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 
 import com.ws.coyc.wsnote.Data.Goods;
+import com.ws.coyc.wsnote.Data.Person;
 import com.ws.coyc.wsnote.SQLiteHelper.Item;
 import com.ws.coyc.wsnote.SQLiteHelper.Table;
+
+import java.util.ArrayList;
 
 /**
  * Created by coyc on 16-9-9.
@@ -25,7 +29,7 @@ public class GoodsTable extends Table{
     {
         init();
     }
-    public void init()
+    private void init()
     {
         table_name = "goods_table";
         keyItem = "_id";
@@ -42,7 +46,26 @@ public class GoodsTable extends Table{
 
     public void insert(Goods goods)
     {
-        insert(goods.getContentValues());
+        goods.id = insert(goods.getContentValues());
+    }
+
+    public ArrayList<Goods> getAllGoods()
+    {
+        ArrayList<Goods> goodses = new ArrayList<>();
+        Cursor cursor = getAllData();
+        cursor.moveToFirst();
+        int size_c = cursor.getCount();
+        for(int i = 0;i<size_c;i++)
+        {
+            goodses.add(new Goods(cursor));
+            cursor.moveToNext();
+        }
+        return goodses;
+    }
+
+    public void update(Goods goods)
+    {
+        updateOneByItem("_id",goods.id+"",goods.getContentValues());
     }
 
 

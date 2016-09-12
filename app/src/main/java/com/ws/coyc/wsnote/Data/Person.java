@@ -45,7 +45,7 @@ public class Person {
         l.l("address2"+address2);
 
         l.l("name"+name);
-        l.l("phone"+phone);
+        l.l("info"+phone);
     }
 
     public static void initPersonInSQL(Person person,Cursor cursor)
@@ -88,7 +88,7 @@ public class Person {
             contentValues.put("address1",address1);
             contentValues.put("address2",address2);
 
-            contentValues.put("phone",phone);
+            contentValues.put("info",phone);
             contentValues.put("src_photo","");
 
             id =  SQLiteManager.getInstance().getTableByName(DataManager.TABLE_PERSON_NAME).insert(contentValues);

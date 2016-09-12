@@ -37,13 +37,13 @@
 
 
     <EditText
-        android:id="@+id/tv_goods"
+        android:id="@+id/tv_goods_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
         android:layout_toLeftOf="@+id/cb_fh"
         android:layout_below="@+id/tv_name"
-        android:layout_above="@+id/tv_text_prise"
+        android:layout_above="@+id/tv_text_money_in"
 
         android:hint="商品描述"
         style="@style/edit_text"
@@ -65,10 +65,10 @@
 
 
     <EditText
-        android:id="@+id/tv_text_prise"
+        android:id="@+id/tv_text_money_in"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_above="@+id/tv_phone"
+        android:layout_above="@+id/tv_info"
         android:layout_toLeftOf="@+id/cb_fk"
         android:hint="进货价"
 
@@ -90,9 +90,9 @@
 
 
 
-    <!--phone-->
+    <!--info-->
     <EditText
-        android:id="@+id/tv_phone"
+        android:id="@+id/tv_info"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_above="@+id/tv_address"
@@ -166,20 +166,20 @@
         android:id="@+id/iv_money_in"
         style="@style/image_view_edit"
         android:src="@mipmap/in"
-        android:layout_below="@id/tv_goods"
+        android:layout_below="@id/tv_goods_info"
         />
 
     <ImageView
         android:id="@+id/iv_phone"
         style="@style/image_view_edit"
         android:src="@mipmap/phone"
-        android:layout_below="@id/tv_text_prise"
+        android:layout_below="@id/tv_text_money_in"
         />
     <ImageView
         android:id="@+id/iv_address"
         style="@style/image_view_edit"
         android:src="@mipmap/address"
-        android:layout_below="@id/tv_phone"
+        android:layout_below="@id/tv_info"
         />
 
 </RelativeLayout>

@@ -20,6 +20,7 @@ import com.ws.coyc.wsnote.R;
 import com.ws.coyc.wsnote.UI.Activity.MainActivity;
 import com.ws.coyc.wsnote.UI.Activity.PersonActivity;
 import com.ws.coyc.wsnote.UI.Activity.WSNoteInfo;
+import com.ws.coyc.wsnote.UI.Activity.WareHouseActivity;
 import com.ws.coyc.wsnote.UI.Adapter.ListPosition;
 
 
@@ -114,7 +115,8 @@ public class F_4 extends Fragment {
         mRl_goods.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"暂未开放 敬请期待",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, WareHouseActivity.class);
+                startActivity(intent);
             }
         });
         mBt_version.setOnClickListener(new View.OnClickListener() {

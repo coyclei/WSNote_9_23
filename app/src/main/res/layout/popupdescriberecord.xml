@@ -28,19 +28,19 @@
         />
 
     <EditText
-        android:id="@+id/tv_goods"
+        android:id="@+id/tv_goods_info"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/tv_name"
-        android:layout_above="@+id/tv_phone"
+        android:layout_above="@+id/tv_info"
         android:hint="商品描述"
         style="@style/edit_text"
 
         android:layout_toRightOf="@+id/iv_info"
         />
-    <!--phone-->
+    <!--info-->
     <EditText
-        android:id="@+id/tv_phone"
+        android:id="@+id/tv_info"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="left|top"
@@ -116,13 +116,13 @@
         android:id="@+id/iv_phone"
         style="@style/image_view_edit"
         android:src="@mipmap/phone"
-        android:layout_below="@id/tv_goods"
+        android:layout_below="@id/tv_goods_info"
         />
     <ImageView
         android:id="@+id/iv_address"
         style="@style/image_view_edit"
         android:src="@mipmap/address"
-        android:layout_below="@id/tv_phone"
+        android:layout_below="@id/tv_info"
         />
    
 

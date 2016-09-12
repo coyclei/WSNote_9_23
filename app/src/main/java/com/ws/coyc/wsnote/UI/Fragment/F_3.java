@@ -98,7 +98,7 @@ public class F_3 extends Fragment {
                         addInfoDataIn3(data.getString("name",""),data.getString("text",""),
                                 data.getString("prise_in","")
                                 ,data.getString("prise_out","")
-                                ,data.getString("phone")
+                                ,data.getString("info")
                                 ,data.getString("address")
                                 ,data.getString("image_path")
                         );
@@ -139,9 +139,7 @@ public class F_3 extends Fragment {
             public void onClick(View view) {
                 add();
 
-                Goods goods = new Goods("sp1","is good for sleep",100,200);
-                int re = (int)DataManager.getInstance().goodsTable.insert(goods.getContentValues());
-                l.l("add one goods : "+re+"");
+
             }
         });
 

@@ -89,8 +89,8 @@ public class F_1 extends Fragment {
 //                dialog_addWait.setTitle("新增订单q");
 //                dialog_addWait.setDescribeInterface(new OnDescribeInterface() {
 //                    @Override
-//                    public void onDescribed(String name, String text, String phone, String address, String image_path) {
-//                        addOneWaitInfo(name, text, phone, address, image_path);
+//                    public void onDescribed(String name, String text, String info, String address, String image_path) {
+//                        addOneWaitInfo(name, text, info, address, image_path);
 //                    }
 //                });
 //                FragmentManager fragmentManager = getActivity().getFragmentManager();
@@ -210,7 +210,7 @@ public class F_1 extends Fragment {
                         data.putString("prise_in",prise_in);
                         data.putBoolean("isFH",isFH);
                         data.putBoolean("isFK",isFK);
-                        data.putString("phone",phone);
+                        data.putString("info",phone);
                         data.putString("address",address);
                         data.putString("image_path",path);
                         message.setData(data);
@@ -240,7 +240,7 @@ public class F_1 extends Fragment {
                         data.putString("text",text);
                         data.putString("prise_in",prise_in);
                         data.putString("prise_out",prise_out);
-                        data.putString("phone",phone);
+                        data.putString("info",phone);
                         data.putString("address",address);
                         data.putString("image_path",path);
 

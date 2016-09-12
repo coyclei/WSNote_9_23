@@ -45,17 +45,12 @@ public class SQLiteManager {
 
         @Override
         public void onUpgrade(SQLiteDatabase _db, int _oldVersion,int _newVersion) {
-            l.l("SQL onUpgrade ............ ");
             int size = tables.size();
             for(int i = 0;i<size;i++)
             {
-//                _db.execSQL("DROP TABLE IF EXISTS " + getTableCreateSQLString(tables.get(i)));
                 String sql = getTableCreateSQLString(tables.get(i));
-                l.l("SQL onUpgrade "+sql);
                 _db.execSQL(sql);
             }
-//            onCreate(_db);
-
         }// end for private static class DBOpenHelper extends SQLiteOpenHelper
     }
 

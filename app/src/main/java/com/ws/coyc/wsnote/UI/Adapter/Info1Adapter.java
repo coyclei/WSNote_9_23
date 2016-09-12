@@ -110,7 +110,7 @@ public class Info1Adapter extends BaseAdapter {
             holder.address.setText(infoWait.person.address1);
 //            holder.address.setText("地    址 : "+infoWait.person.address1);
             holder.phone.setText(infoWait.person.phone);
-//            holder.phone.setText("手机号 : "+infoWait.person.phone);
+//            holder.info.setText("手机号 : "+infoWait.person.info);
             holder.image.setVisibility(View.VISIBLE);
             holder.image.setVisibility(View.VISIBLE);
             holder.ib_phone.setVisibility(View.VISIBLE);
@@ -146,9 +146,9 @@ public class Info1Adapter extends BaseAdapter {
         holder.id = (TextView) convertView.findViewById(R.id.tv_id);
         holder.create_date = (TextView) convertView.findViewById(R.id.tv_date_create);
         holder.name = (TextView) convertView.findViewById(R.id.tv_name);
-        holder.goods = (TextView) convertView.findViewById(R.id.tv_goods);
+        holder.goods = (TextView) convertView.findViewById(R.id.tv_goods_info);
 //        holder.bill_id = (TextView) convertView.findViewById(R.id.tv_bill_id);
-        holder.phone = (TextView) convertView.findViewById(R.id.tv_phone);
+        holder.phone = (TextView) convertView.findViewById(R.id.tv_info);
         holder.address = (TextView) convertView.findViewById(R.id.tv_address);
         holder.image = (CircleImageView) convertView.findViewById(R.id.iv_image);
         holder.ib_phone = (ImageButton) convertView.findViewById(R.id.ib_phone);
@@ -164,6 +164,7 @@ public class Info1Adapter extends BaseAdapter {
 
                 Intent intent = new Intent(mContext, ImageViewActivity.class);
                 intent.putExtra("path",info.get(position.position).image_url);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }
         });

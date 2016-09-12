@@ -29,7 +29,7 @@
         />
     <!--商品信息备注-->
     <TextView
-        android:id="@+id/tv_goods"
+        android:id="@+id/tv_goods_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="面膜3个 枕头4个"

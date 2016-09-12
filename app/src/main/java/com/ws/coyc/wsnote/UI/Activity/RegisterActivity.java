@@ -105,7 +105,7 @@
 //
 //                setSMSCodeClickable(false);
 //                /*
-//                check phone num and to send msg
+//                check info num and to send msg
 //                 */
 //                new Thread(new Runnable() {
 //                    @Override

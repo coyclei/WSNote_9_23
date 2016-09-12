@@ -83,7 +83,7 @@ public class F_2 extends Fragment {
                         Bundle data = msg.getData();
                         addOneInfoDataIn2(data.getString("name",""),data.getString("text",""),
                                 data.getString("prise_in",""),data.getBoolean("isFH"),data.getBoolean("isFK")
-                                ,data.getString("phone")
+                                ,data.getString("info")
                                 ,data.getString("address")
                                 ,data.getString("image_path")
                         );
@@ -227,7 +227,7 @@ public class F_2 extends Fragment {
                         data.putString("text",text);
                         data.putString("prise_in",prise_in);
                         data.putString("prise_out",prise_out);
-                        data.putString("phone",phone);
+                        data.putString("info",phone);
                         data.putString("address",address);
                         data.putString("image_path",path);
 

@@ -78,7 +78,7 @@ public class BillInfoOver extends BillInfo {
         contentValues.put("dateStart", dateStart.getTime());
         contentValues.put("date_end","");
         contentValues.put("src_img",image_url);
-        contentValues.put("sale_ids","");
+        contentValues.put(BillTable.sale_ids,"");
         contentValues.put("src_audio","");
         return contentValues;
     }

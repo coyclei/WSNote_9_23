@@ -15,9 +15,11 @@ import android.widget.Toast;
 
 
 import com.ws.coyc.wsnote.Data.BillInfoOver;
+import com.ws.coyc.wsnote.Data.DataManager;
 import com.ws.coyc.wsnote.R;
 import com.ws.coyc.wsnote.UI.Activity.ImageViewActivity;
 import com.ws.coyc.wsnote.UI.Layout.CircleImageView;
+import com.ws.coyc.wsnote.UI.Layout.HorizontalListView;
 import com.ws.coyc.wsnote.Utils.DateUtils;
 import com.ws.coyc.wsnote.Utils.ImageLoader;
 import com.ws.coyc.wsnote.Utils.MyColor;
@@ -84,11 +86,7 @@ public class Info3Adapter extends BaseAdapter {
         holder.name.setText(infoOver.person.name);
         holder.goods.setText(infoOver.goods);
         String week1 = DateUtils.getWeek(infoOver.dateStart);
-//        String week2 = DateUtils.getWeek(infoOver.end_date);
-
-//        holder.create_date.setText(week1+" "+DateUtils.ConverToString_MDHM(infoOver.dateStart));
         holder.create_date.setText(week1+" "+DateUtils.ConverToString_MDHM(infoOver.dateStart));
-//        holder.end_date.setText(week2+" "+DateUtils.ConverToString_MDHM(infoOver.end_date));
         holder.end_date.setText("");
         holder.jh_money.setText("进价:"+infoOver.all_in_money);
         holder.ch_money.setText("售价:"+infoOver.all_out_money);
@@ -154,18 +152,19 @@ public class Info3Adapter extends BaseAdapter {
 
         holder.create_date = (TextView) convertView.findViewById(R.id.tv_date_create);
         holder.name = (TextView) convertView.findViewById(R.id.tv_name);
-        holder.goods = (TextView) convertView.findViewById(R.id.tv_goods);
+        holder.goods = (TextView) convertView.findViewById(R.id.tv_goods_info);
 
         holder.end_date = (TextView) convertView.findViewById(R.id.tv_date_end);
         holder.jh_money = (TextView) convertView.findViewById(R.id.tv_jh_money);
-        holder.ch_money = (TextView) convertView.findViewById(R.id.tv_ch_money);
-        holder.get_money = (TextView) convertView.findViewById(R.id.tv_get_money);
-        holder.phone = (TextView) convertView.findViewById(R.id.tv_phone);
+        holder.ch_money = (TextView) convertView.findViewById(R.id.tv_money_in);
+        holder.get_money = (TextView) convertView.findViewById(R.id.tv_money_out);
+        holder.phone = (TextView) convertView.findViewById(R.id.tv_info);
         holder.address = (TextView) convertView.findViewById(R.id.tv_address);
         holder.image = (CircleImageView) convertView.findViewById(R.id.iv_image);
         holder.ib_phone = (ImageButton) convertView.findViewById(R.id.ib_phone);
         holder.ib_address = (ImageButton) convertView.findViewById(R.id.ib_address);
-
+        holder.horizontalListView = (HorizontalListView) convertView.findViewById(R.id.hlv_list);
+        holder.horizontalListView.setAdapter(holder.goodsInfoAdapter);
 
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,7 +223,9 @@ public class Info3Adapter extends BaseAdapter {
         public CircleImageView image;
         public ImageButton ib_phone;
         public ImageButton ib_address;
-//        public Button more;
+
+        public HorizontalListView horizontalListView ;
+        public GoodsInfoAdapter goodsInfoAdapter = new GoodsInfoAdapter(DataManager.getInstance().goodses,mContext);
 
 
     }

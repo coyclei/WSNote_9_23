@@ -2,7 +2,6 @@ package com.ws.coyc.wsnote.Data;
 
 import android.content.Context;
 import android.database.Cursor;
-
 import com.ws.coyc.wsnote.Data.Table.BillTable;
 import com.ws.coyc.wsnote.Data.Table.GoodsTable;
 import com.ws.coyc.wsnote.Data.Table.PersonTable;
@@ -12,7 +11,6 @@ import com.ws.coyc.wsnote.SQLiteHelper.SQLiteManager;
 import com.ws.coyc.wsnote.SQLiteHelper.Utils.l;
 import com.ws.coyc.wsnote.Utils.ComparatorPerson;
 import com.ws.coyc.wsnote.Utils.DateUtils;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -29,12 +27,12 @@ public class DataManager {
     public Date startDate;
     public Date endDate;
 
-
     public  ArrayList<BillInfoWait> infos_wait = new ArrayList<>();
     public  ArrayList<BillInfoIng> infos_ing = new ArrayList<>();
     public  ArrayList<BillInfoOver> infos_over = new ArrayList<>();
 
     public ArrayList<Person> persons = new ArrayList<>();
+    public ArrayList<Goods> goodses = new ArrayList<>();
 
     private static DataManager ourInstance = new DataManager();
 
@@ -53,8 +51,7 @@ public class DataManager {
         return ourInstance;
     }
 
-    private DataManager() {
-    }
+    private DataManager() {}
 
     // all data init
     public void init(Context context)
@@ -66,6 +63,9 @@ public class DataManager {
 
         //initPerson
 //        initPersonInfo();
+
+        //initGoods
+        goodses = goodsTable.getAllGoods();
 
     }
 
@@ -352,53 +352,6 @@ public class DataManager {
     }
 
 
-
-
-
-
-//    public static final String name = "name";
-//    public static final String address1 = "address1";
-//    public static final String address2 = "address2";
-//    public static final String phone = "phone";
-//    public static final String src_photo = "src_photo";
-
-//    @NonNull
-//    private ArrayList<Item> initPersonTableItems() {
-//        ArrayList<Item> items_person = new ArrayList<>();
-//
-//        items_person.add(new Item(name  , Item.item_type_text));
-//        items_person.add(new Item(address1  , Item.item_type_text));
-//        items_person.add(new Item(address2  , Item.item_type_text));
-//        items_person.add(new Item(phone  , Item.item_type_text));
-//        items_person.add(new Item(src_photo  , Item.item_type_text));
-//
-//        return items_person;
-//    }
-
-
-
-//    @NonNull
-//    private ArrayList<Item> initBillTableItems() {
-//        ArrayList<Item> items = new ArrayList<>();
-//        items.add(new Item(BillTable.name_id,Item.item_type_integer));
-//        items.add(new Item(BillTable.all_info,Item.item_type_text));
-//        items.add(new Item(BillTable.single_in,Item.item_type_integer));
-//        items.add(new Item(BillTable.single_out,Item.item_type_integer));
-//        items.add(new Item(BillTable.count,Item.item_type_integer));
-//        items.add(new Item(BillTable.all_in,Item.item_type_integer));
-//        items.add(new Item(BillTable.all_out,Item.item_type_integer));
-//        items.add(new Item(BillTable.state,Item.item_type_text));
-//        items.add(new Item(BillTable.state_fh,Item.item_type_text));
-//        items.add(new Item(BillTable.state_fk,Item.item_type_text));
-//        items.add(new Item(BillTable.date_start,Item.item_type_long));
-//        items.add(new Item(BillTable.date_end,Item.item_type_long));
-//        items.add(new Item(BillTable.src_img,Item.item_type_text));
-//        items.add(new Item(BillTable.sale_ids,Item.item_type_text));
-//        items.add(new Item(BillTable.src_audio,Item.item_type_text));
-//        return items;
-//    }
-
-
     public void findPersonByKeyWord(final String key, final OnFindPerson onFindPerson)
     {
 
@@ -422,25 +375,6 @@ public class DataManager {
 
     public void findBillByKeyWord(String key,OnFindBill onFindBill)
     {
-//        Cursor cursor_wait = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME)
-//                .mhSerachBetweenAB_int_state(BillInfo.date_start,startDate.getTime(),endDate.getTime(),BillInfo.bill_strings,key,BillInfo.state,BillInfo.STATE_WAIT);
-//        infos_wait = ConvertToWaitList(cursor_wait);
-//        initPerson(infos_wait);
-//
-//        Cursor cursor_ing = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME)
-//                .mhSerachBetweenAB_int_state(BillInfo.date_start,startDate.getTime(),endDate.getTime(),BillInfo.bill_strings,key,BillInfo.state,BillInfo.STATE_ING);
-//        infos_ing = ConvertToIngList(cursor_ing);
-//        initPerson(infos_ing);
-//
-//
-//        Cursor cursor_over = SQLiteManager.getInstance().getTableByName(DataManager.TABLE_BILL_NAME)
-//                .mhSerachBetweenAB_int_state(BillInfo.date_start,startDate.getTime(),endDate.getTime(),BillInfo.bill_strings,key,BillInfo.state,BillInfo.STATE_OVER);
-//        infos_over = ConvertToOverList(cursor_over);
-//        initPerson(infos_over);
-
-
-
-
 
         infos_wait.clear();
         infos_over.clear();
@@ -512,10 +446,14 @@ public class DataManager {
         onFindBill.onfind();
     }
 
-
-
-
-
-
+    public void addGoods(Goods goods)
+    {
+        goodses.add(goods);
+        goodsTable.insert(goods);
+    }
+    public void updateGoods(Goods goods)
+    {
+        goodsTable.update(goods);
+    }
 
 }

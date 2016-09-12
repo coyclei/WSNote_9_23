@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="300dp"
     android:background="@android:color/white"
     >
     
@@ -9,118 +9,79 @@
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="描述"
+        android:text="新增商品"
         android:gravity="center_vertical"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:paddingLeft="20dp"
         />
-    <ImageButton
-        android:id="@+id/bt_delete"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:padding="10dp"
-        android:src="@mipmap/delete"
-        android:background="@android:color/transparent"
-        android:scaleType="centerCrop"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="5dp"
-        />
+
     <EditText 
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/tv_title"
 
         android:layout_toLeftOf="@+id/iv_image"
-       	android:hint="姓名"
+        android:layout_below="@+id/tv_title"
+       	android:hint="商品名"
 
         style="@style/edit_text"
         android:layout_toRightOf="@+id/iv_name"
         />
+
     <ImageView
         android:id="@+id/iv_image"
         android:layout_below="@+id/tv_title"
         style="@style/iv_image_goods"
         android:src="@mipmap/add"
         />
-
-
-
-
     <EditText
         android:id="@+id/tv_goods_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
         android:layout_below="@+id/tv_name"
-        android:layout_toLeftOf="@+id/cb_fh"
         android:layout_above="@+id/tv_text_money_in"
-
         android:hint="商品描述"
         style="@style/edit_text"
         android:layout_toRightOf="@+id/iv_info"
         />
-    <!--是否已经发货-->
-    <CheckBox
-        android:id="@+id/cb_fh"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_below="@+id/tv_name"
-        android:layout_alignParentRight="true"
-        android:text="已发货"
-        android:gravity="center"
-        android:layout_margin="5dp" />
-
-
-
-
 
     <EditText
         android:id="@+id/tv_text_money_in"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_toLeftOf="@+id/cb_fk"
         android:layout_above="@+id/tv_info"
-        android:hint="进货价"
+        android:hint="默认进货价"
         style="@style/edit_text_input_num_count"
         android:layout_toRightOf="@+id/iv_money_in"
         />
-    <!--是否已经付款-->
-    <CheckBox
-        android:id="@+id/cb_fk"
-        android:layout_width="wrap_content"
+
+    <EditText
+        android:id="@+id/tv_text_money_out"
+        android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/cb_fh"
+        android:layout_above="@+id/tv_info"
         android:layout_alignParentRight="true"
-        android:text="已付款"
-        android:gravity="center"
-        android:layout_margin="5dp"
+        android:hint="默认出货价"
+
+        style="@style/edit_text_input_num_count"
+
         />
 
-
-    <!--info-->
     <EditText
         android:id="@+id/tv_info"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:gravity="left|top"
-        android:layout_above="@+id/tv_address"
-        android:hint="手机号(选填)"
-
+        android:layout_above="@+id/ll_bts"
+        android:textColor="@android:color/black"
+        android:hint="初始库存量"
         style="@style/edit_text_phone"
         android:layout_toRightOf="@+id/iv_phone"
         />
     <!--address-->
-    <EditText
-        android:id="@+id/tv_address"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_above="@+id/ll_bts"
-        android:hint="地址(选填)"
-        style="@style/edit_text"
-        android:layout_toRightOf="@+id/iv_address"
-        />
+
+
 
     <LinearLayout
         android:id="@+id/ll_bts"
@@ -129,36 +90,22 @@
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         >
-        <Button 
-            android:id="@+id/bt_dis"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:text="完成修改"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            />
-        <Button 
+        <Button
             android:id="@+id/bt_ok"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:text="完成订单"
+            android:text="确定"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             />
     </LinearLayout>
-
     <ListView
         style="@style/list_person"
         android:layout_below="@+id/tv_name"
-
         >
-
     </ListView>
-
     <ImageView
         android:id="@+id/iv_name"
         style="@style/image_view_edit"
@@ -179,6 +126,13 @@
         android:src="@mipmap/in"
         android:layout_below="@id/tv_goods_info"
         />
+    <ImageView
+        android:id="@+id/iv_money_out"
+        style="@style/image_view_edit_money_out"
+        android:src="@mipmap/out"
+        android:layout_below="@id/tv_goods_info"
+        android:layout_toLeftOf="@id/tv_text_money_out"
+        />
 
     <ImageView
         android:id="@+id/iv_phone"
@@ -186,11 +140,6 @@
         android:src="@mipmap/phone"
         android:layout_below="@id/tv_text_money_in"
         />
-    <ImageView
-        android:id="@+id/iv_address"
-        style="@style/image_view_edit"
-        android:src="@mipmap/address"
-        android:layout_below="@id/tv_info"
-        />
+
 
 </RelativeLayout>

@@ -64,7 +64,7 @@ public class BillInfoWait extends BillInfo {
         contentValues.put("dateStart", dateStart.getTime());
 //        contentValues.put("date_end", dateStart.getTime());
         contentValues.put("date_end","");
-        l.l("image_url....................."+image_url);
+        l.l("image_path....................."+image_url);
         contentValues.put("src_img", image_url);
         contentValues.put("sale_ids", "");
         contentValues.put("src_audio", "");

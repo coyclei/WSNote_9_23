@@ -29,9 +29,9 @@
             style="@style/text_info"
             />
 
-        <!--phone-->
+        <!--info-->
         <TextView
-            android:id="@+id/tv_phone"
+            android:id="@+id/tv_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_name"
@@ -43,7 +43,7 @@
             android:id="@+id/tv_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_phone"
+            android:layout_below="@+id/tv_info"
             style="@style/text_info"
             />
 
@@ -67,7 +67,7 @@
                 />
             <TextView
                 android:layout_weight="1"
-                android:id="@+id/tv_ch_money"
+                android:id="@+id/tv_money_in"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/text_info_fk_fh_state"
@@ -75,7 +75,7 @@
 
             <TextView
                 android:layout_weight="1"
-                android:id="@+id/tv_get_money"
+                android:id="@+id/tv_money_out"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/text_info"

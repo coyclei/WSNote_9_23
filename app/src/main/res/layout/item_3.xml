@@ -42,11 +42,21 @@
             style="@style/text_info"
             />
         <!--商品信息备注-->
+
+        <com.ws.coyc.wsnote.UI.Layout.HorizontalListView
+            android:id="@+id/hlv_list"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@+id/tv_name"
+            android:background="@android:color/holo_blue_bright"
+            >
+
+        </com.ws.coyc.wsnote.UI.Layout.HorizontalListView>
         <TextView
-            android:id="@+id/tv_goods"
+            android:id="@+id/tv_goods_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_name"
+            android:layout_below="@+id/hlv_list"
 
             style="@style/text_info"
             />
@@ -56,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@+id/tv_goods"
+            android:layout_below="@+id/tv_goods_info"
             >
             <!--进货价-->
             <TextView
@@ -71,7 +81,7 @@
                 />
             <TextView
                 android:layout_weight="1"
-                android:id="@+id/tv_ch_money"
+                android:id="@+id/tv_money_in"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/text_info_fk_fh_state"
@@ -86,7 +96,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/tv_get_money"
+                    android:id="@+id/tv_money_out"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/text_info"
@@ -99,9 +109,9 @@
         </LinearLayout>
 
 
-        <!--phone-->
+        <!--info-->
         <TextView
-            android:id="@+id/tv_phone"
+            android:id="@+id/tv_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ll_b"
@@ -115,7 +125,7 @@
             android:id="@+id/tv_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_phone"
+            android:layout_below="@+id/tv_info"
             android:layout_toRightOf="@+id/ib_address"
             style="@style/text_info"
             android:layout_toLeftOf="@+id/iv_image"
@@ -131,7 +141,7 @@
 
         <ImageButton
             android:id="@+id/ib_address"
-            android:layout_below="@+id/tv_phone"
+            android:layout_below="@+id/tv_info"
             android:src="@mipmap/map"
             style="@style/image_button_address"
             />

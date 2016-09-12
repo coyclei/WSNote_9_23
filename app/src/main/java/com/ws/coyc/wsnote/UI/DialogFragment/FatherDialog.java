@@ -48,8 +48,8 @@ public class FatherDialog extends DialogFragment {
     {
         mTv_tille = (TextView) v.findViewById(R.id.tv_title);
         mText_name = (EditText) v.findViewById(R.id.tv_name);
-        mText_goods = (EditText) v.findViewById(R.id.tv_goods);
-        mTv_phone = (EditText) v.findViewById(R.id.tv_phone);
+        mText_goods = (EditText) v.findViewById(R.id.tv_goods_info);
+        mTv_phone = (EditText) v.findViewById(R.id.tv_info);
         mTv_address = (EditText) v.findViewById(R.id.tv_address);
 
 

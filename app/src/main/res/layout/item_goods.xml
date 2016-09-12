@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:descendantFocusability="blocksDescendants"
+    >
+
+    <TextView
+        android:id="@+id/tv_id"
+        style="@style/text_id"
+        />
+
+    <RelativeLayout
+        android:id="@+id/rl_left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/tv_id"
+        android:layout_toLeftOf="@id/iv_image"
+        android:layout_above="@+id/ll_b"
+        >
+
+        <ImageView
+
+            android:id="@+id/iv__name"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/goods_name"
+            android:padding="7dp"
+            />
+        <!--订单人-->
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            style="@style/text_info"
+            android:layout_toRightOf="@+id/iv__name"
+            />
+
+
+        <ImageView
+            android:id="@+id/iv__info"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/info"
+            android:padding="7dp"
+            android:layout_below="@+id/tv_name"
+            />
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_name"
+            android:layout_toRightOf="@id/iv__info"
+            style="@style/text_info"
+            />
+
+    </RelativeLayout>
+
+    <com.ws.coyc.wsnote.UI.Layout.CircleImageView
+        android:id="@+id/iv_image"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:scaleType="centerCrop"
+        android:layout_above="@+id/ll_b"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_b"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/tv_id"
+        >
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/tv_money_in"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/text_info_fk_fh_state"
+            />
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/tv_money_out"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/text_info_fk_fh_state"
+            />
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/iv__count"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ware_count"
+                android:layout_toLeftOf="@+id/tv_ware_count"
+                android:padding="8dp"
+                />
+            <TextView
+                android:id="@+id/tv_ware_count"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                style="@style/text_info"
+
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>
